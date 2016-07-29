@@ -1,0 +1,15 @@
+[submodule "bash/.local/git/oh-my-git"]
+	path = bash/.local/git/oh-my-git
+	url = https://github.com/hashhar/oh-my-git.git
+[submodule "bash/.local/git/bashmarks"]
+	path = bash/.local/git/bashmarks
+	url = https://github.com/hashhar/bashmarks.git
+[submodule "bash/.local/git/commacd"]
+	path = bash/.local/git/commacd
+	url = https://github.com/shyiko/commacd.git
+[submodule "bash/.local/git/PathPicker"]
+	path = bash/.local/git/PathPicker
+	url = https://github.com/facebook/PathPicker.git
+[submodule "bash/.local/git/fasd"]
+	path = bash/.local/git/fasd
+	url = https://github.com/clvv/fasd.git
