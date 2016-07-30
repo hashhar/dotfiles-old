@@ -85,4 +85,4 @@ alias pcc="xsel -b <"
 alias beep="cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/complete.oga 1>/dev/null 2>&1"
 
 # Delete the currently playing song
-alias deletecurrent='rm "$(mpc current -f %file%)"'
+alias deletecurrent='rm ~/Music/"$(mpc current -f %file%)"'

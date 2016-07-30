@@ -1,3 +1,11 @@
+# ===== Custom.gitignore ===== #
+# MPD and mpdscribble files
+.mpdscribble/
+
+mpd/.config/mpd/**
+!mpd/.config/mpd/mpd.conf
+!mpd/.config/mpd/configure.sh
+
 # ===== Global/Linux.gitignore ===== #
 *~
 
