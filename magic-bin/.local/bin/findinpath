@@ -1,0 +1,11 @@
+#!/usr/bin/env perl
+
+# Taken from: https://bbs.archlinux.org/viewtopic.php?pid=1486583#p1486583
+
+use strict;
+use warnings;
+use feature 'say';
+
+use File::Find;
+
+find sub{ say $File::Find::name if /$ARGV[0]/ }, $_ for split ':', $ENV{PATH};

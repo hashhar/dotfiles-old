@@ -1,0 +1,37 @@
+#!/usr/bin/env sh
+
+# Unblock cards if they are blocked
+rfkill unblock wifi
+
+# Turn on the wifi device
+wlan=`iwconfig 2>/dev/null | awk '{ print $1 }' | head -n 1`
+sudo ifconfig "$wlan" up
+nmcli radio wifi on
+sudo iwlist "$wlan" s 1>/dev/null 2>&1
+
+# Rescan for up to date list (redirect error output)
+nmcli device wifi rescan 2>/dev/null
+sleep 1
+
+# List the available WiFi networks
+nmcli device wifi list
+
+# Ask user for values
+echo "Enter the network SSID: "
+read ssid
+
+# Check if connection exists
+nmcli connection up "$ssid" 1>/dev/null 2>&1
+# 0 means success
+if [ "$?" -eq 0 ]; then
+	echo "Connection successfully activated."
+else
+	echo "Enter the network key (leave blank if the network is open): "
+	read key
+	# Connect to the network
+	if [ "x$key" = "x" ]; then
+		nmcli device wifi connect "$ssid"
+	else
+		nmcli device wifi connect "$ssid" password "$key"
+	fi
+fi

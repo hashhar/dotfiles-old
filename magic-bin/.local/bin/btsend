@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+# Unblock cards if they are blocked
+rfkill unblock bluetooth
+
+# Turn on bluetooth device
+bluetoothctl 1>/dev/null 2>&1 << EOF
+power on
+scan on
+EOF
+
+# Open Send To
+bluetooth-sendto 1>/dev/null 2>&1
+
+# Turn off bluetooth
+bluetoothctl 1>/dev/null 2>&1 << EOF
+power off
+EOF

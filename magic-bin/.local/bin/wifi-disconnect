@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+# Unblock cards if they are blocked
+rfkill unblock wifi
+rfkill unblock all
+
+# Turn on the wifi device
+wlan=$(iwconfig 2>/dev/null | awk '{ print $1 }' | head -n 1)
+sudo ifconfig "$wlan" up
+nmcli radio wifi on
+
+# Turn off the wifi device
+nmcli radio wifi off
+#sudo ifconfig "$wlan" down
+

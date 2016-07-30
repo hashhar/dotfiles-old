@@ -1,0 +1,73 @@
+#!/usr/bin/env perl
+
+# Taken from: https://bbs.archlinux.org/viewtopic.php?pid=438377#p438377
+
+use warnings;
+use strict;
+
+my $fstabFile = shift;
+my $fstabOld;
+my $fstab;
+my @fstabLines;
+push @fstabLines, ['# <file system>', '<dir>', '<type>', '<options>', '<dump>', '<pass>'];
+my @lengths = map {length($_)} @{$fstabLines[0]};
+my $longestLine;
+
+open(my $fh, '<'. $fstabFile) or die "Unable to open $fstabFile: $!\n";
+while(defined(my $line =<$fh>))
+{
+    $fstabOld .= $line;
+    $longestLine = (length($line) > $longestLine) ? length($line) : $longestLine;
+    if ($line =~ m/^#/ and $line !~ m/<file system>/)
+    {
+        $fstab .= $line;
+    }
+    elsif ($line =~ m/^#/ and $line =~ m/<file system>/)
+    {
+        next;
+    }
+    else
+    {
+        $line =~ s/ +/ /g;
+        my @fields = split ' ',$line;
+        push @fstabLines, \@fields;
+        for (my $i; $i < scalar @fields; $i += 1)
+        {
+            if (length($fields[$i]) > $lengths[$i])
+            {
+                $lengths[$i] = length($fields[$i]);
+            }
+        }
+    }
+
+}
+close $fh;
+
+my $printfStr = join '', map( {'%-'.($_+1).'s';} @lengths);
+
+foreach my $line (@fstabLines)
+{
+    my @line = @{$line};
+    $line = sprintf($printfStr, @line)."\n";
+    $fstab .= $line;
+    $longestLine = (length($line) > $longestLine) ? length($line) : $longestLine;
+}
+
+my $separator = ('-' x $longestLine)."\n";
+
+print "\n",$separator, "ORIGINAL FILE\n", $separator, $fstabOld, $separator, "REFORMATTED FILE\n", $separator, $fstab, $separator;
+
+print "Overwrite old file with new one? (y/n) ";
+my $ans = <>;
+chomp $ans;
+if ($ans eq 'y')
+{
+    open(my $fh, '>', $fstabFile) or die "Unable to open $fstabFile: $!\n";
+    print $fh $fstab;
+    close $fh;
+}
+else
+{
+    print "Exiting without saving...\n";
+    exit;
+}

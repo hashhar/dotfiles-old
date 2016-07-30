@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+find $1 -type f -exec file -b --mime-type '{}' \; | awk '// { count[$1]++; total++; }
+END {
+	printf "┌───────────────────────────────────────┐\n"
+	printf "│ %-15s\t%-7s\t%-7s │\n", "type", "count", "percent"
+	printf "├───────────────────────────────────────┤\n"
+	for (ft in count)
+	printf "│ %-15s\t%-7s\t%-7s │\n", ft ":", count[ft], 100 * count[ft] / total
+	printf "├───────────────────────────────────────┤\n"
+	printf "│ %-15s\t%-7s\t%-7s │\n", "total:", total, ""
+	printf "└───────────────────────────────────────┘\n"
+}'

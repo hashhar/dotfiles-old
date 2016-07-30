@@ -1,0 +1,74 @@
+#!/usr/bin/env sh
+
+SCRIPT_NAME='alarm'
+SCRIPT_DESCRIPTION='A shell script to sound an alarm at a given time with a given sound.'
+SCRIPT_VERSION='0.1'
+SCRIPT_AUTHOR='Ashhar Hasan'
+
+usage() {
+	cat <<-USAGETXT
+		$SCRIPT_NAME
+		v$SCRIPT_VERSION by $SCRIPT_AUTHOR
+
+		$SCRIPT_DESCRIPTION
+
+		USAGE:   $SCRIPT_NAME [OPTIONS]
+
+		OPTIONS: -h, --help               Display this help.
+		         -d time, --delay time    The time to wait before sounding the alarm. It can be in any format 'sleep' command accepts.
+		         -t time, --time time     The time at which to sound the alarm. DEPENDS ON THE 'at' PACKAGE.
+		         -s file, --sound file    The file to use as the alarm sound. The file will be played using cvlc (VLC), mpv or mplayer. A sensible default file will be used if not provided.
+
+	USAGETXT
+}
+
+# Default values
+sound='/usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga'
+
+# Start parsing arguments (If you are thinking why I did not use getopts, see "http://stackoverflow.com/questions/11517139/optional-option-argument-with-getopts/29022709#29022709")
+while true; do
+	case $1 in
+		-h | --help)
+			shift
+			usage ;;
+		-d | --delay)
+			shift
+			if [ -n "$time" ]; then
+				printf "Only one of delay or time can be used at a time."
+				exit
+			fi
+			delay=$1 ;;
+		-t | --time)
+			shift
+			if [ -n "$delay" ]; then
+				printf "Only one of delay or time can be used at a time."
+				exit
+			fi
+			time=$1 ;;
+		-s | --sound)
+			shift
+			sound=$1 ;;
+		-*) usage; exit ;;
+		*) break ;;
+	esac
+done
+
+# Detect available media player
+if [ $(which cvlc) ]; then
+	command="cvlc --loop --quiet $sound"
+elif [ $(which mpv) ]; then
+	command="mpv --loop=inf --really-quiet $sound"
+elif [ $(which mplayer) ]; then
+	command="mplayer -loop 0 -really-quiet $sound"
+else
+	printf "You don't have any of VLC, mpv or mplayer installed. Please install any one of them."
+fi
+
+if [ -n "$delay" ]; then
+	sleep "$delay"
+	$command
+elif [ -n "$time" ]; then
+	at "$time" "$command"
+else
+	usage
+fi

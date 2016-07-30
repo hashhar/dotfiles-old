@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+mkdir empty && rsync -r --delete empty/ ${1} && rmdir ${1}

@@ -1,0 +1,31 @@
+#!/usr/bin/env perl
+
+open a, "<@ARGV[0]";
+open b, "<@ARGV[1]";
+local $/;
+my @a = split /\n/, <a>;
+my @b = split /\n/, <b>;
+my %b = map { $_ => 1 } @b; # Make hash of B
+my @res = grep { !defined $b{$_} } @a; # Everything in A not in B
+print "================================================\n";
+print "Everything in file A not in file B\n";
+print "================================================\n";
+print join "\n", @res;
+print "\n";
+open x, "<@ARGV[1]";
+open z, "<@ARGV[0]";
+local $/;
+my @x = split /\n/, <x>;
+my @z = split /\n/, <z>;
+my %z = map { $_ => 1 } @z; # Make hash of B
+my @res = grep { !defined $z{$_} } @x; # Everything in A not in B
+print "\n\n\n";
+print "#####################################################################################################################################\n";
+print "#####################################################################################################################################\n";
+print "#####################################################################################################################################\n";
+print "\n\n\n";
+print "================================================\n";
+print "Everything in file B not in file A\n";
+print "================================================\n";
+print join "\n", @res;
+print "\n";

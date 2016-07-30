@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+# Taken from: https://bbs.archlinux.org/viewtopic.php?pid=1520558#p1520558
+
+: ${WATCHOPTS:="-d"}
+: ${DIFFOPTS:="-U0"}
+
+[ $# -ne 1 ] && echo "Usage: livesed <input file>" && exit 1
+
+INFILE=$1
+SCRIPT=$(mktemp)
+OUTFILE=$(mktemp)
+
+trap 'rm -f $SCRIPT $OUTFILE' EXIT
+
+${TERMINAL:-xterm} -e watch $WATCHOPTS "sed $SEDOPTS -f $SCRIPT < $INFILE > $OUTFILE; diff $DIFFOPTS $INFILE $OUTFILE"&
+${EDITOR:-vi} $SCRIPT

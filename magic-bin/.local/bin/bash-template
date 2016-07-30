@@ -1,0 +1,181 @@
+#!/bin/bash
+
+SCRIPT_NAME=bash-template
+SCRIPT_DESCRIPTION="A bash script to create new bash scripts."
+SCRIPT_VERSION=0.1
+SCRIPT_AUTHOR=Slithery
+
+
+# Script usage
+#
+
+usage () { cat <<-USAGETXT
+
+	$SCRIPT_NAME
+	v$SCRIPT_VERSION by $SCRIPT_AUTHOR
+	
+	$SCRIPT_DESCRIPTION
+	
+	  USAGE:  $SCRIPT_NAME [OPTIONS] filename
+	
+	  OPTIONS:  -a     Script author (defaults to full name of current user).
+	            -d     Script description.
+	            -h     Display this help.
+	            -v     Script version (defaults to 0.1).
+	            -V     Show version.
+
+USAGETXT
+}
+
+
+# Options
+#
+
+while getopts :a:d:hv:V flag
+	do
+    case "$flag" in
+    (a) OPTION_A="$OPTARG";;
+    (d) OPTION_D="$OPTARG";;
+    (h) usage; exit 0;;
+    (v) OPTION_V="$OPTARG";;
+    (V) echo "$SCRIPT_VERSION"; exit 0;;
+    (*) echo "Invalid option, use -h for help."; exit 1;;
+    esac
+	done
+
+shift $((OPTIND - 1))
+
+
+# Check for filename argument.
+#
+
+if [ -n "$1" ]
+then
+  NEW_SCRIPT_FILENAME=$1
+  NEW_SCRIPT_NAME=$(basename "$1")
+  NEW_SCRIPT_DIR=$(dirname "$1")
+else
+  echo "Filename not specified, use -h for help."; exit 1
+fi
+
+
+# Set variables.
+#
+
+if [ -n "$OPTION_A" ]
+then
+  NEW_SCRIPT_AUTHOR=$OPTION_A
+else
+  NEW_SCRIPT_AUTHOR=$(getent passwd "$USER" | cut -d ':' -f 5 | cut -d ',' -f 1)
+fi
+
+
+if [ -n "$OPTION_D" ]
+then
+  NEW_SCRIPT_DESCRIPTION=$OPTION_D
+else
+  NEW_SCRIPT_DESCRIPTION=""
+fi
+
+
+if [ -n "$OPTION_V" ]
+then
+  NEW_SCRIPT_VERSION=$OPTION_V
+else
+  NEW_SCRIPT_VERSION="0.1"
+fi
+
+
+# Check target..
+#
+
+if [ ! -d "$NEW_SCRIPT_DIR" ]
+then
+  echo "Target directory doesn't exist."; exit 1
+fi
+
+if [ ! -w "$NEW_SCRIPT_DIR" ]
+then
+  echo "Target directory isn't writeable."; exit 1
+fi
+
+if [ -e "$NEW_SCRIPT_FILENAME" ]
+then
+  echo "Target already exists."; exit 1
+fi
+
+
+# Generate script
+#
+
+(
+cat <<DEBUG_OUTPUT
+#!/bin/bash
+
+SCRIPT_NAME="$NEW_SCRIPT_NAME"
+SCRIPT_DESCRIPTION="$NEW_SCRIPT_DESCRIPTION"
+SCRIPT_VERSION="$NEW_SCRIPT_VERSION"
+SCRIPT_AUTHOR="$NEW_SCRIPT_AUTHOR"
+
+DEBUG_OUTPUT
+
+cat <<'DEBUG_OUTPUT'
+# Script usage
+#
+
+usage () { cat <<-USAGETXT
+
+	$SCRIPT_NAME
+	v$SCRIPT_VERSION by $SCRIPT_AUTHOR
+	
+	$SCRIPT_DESCRIPTION
+	
+	  USAGE:  $SCRIPT_NAME [OPTIONS] VAR1
+	
+	  OPTIONS:  -h     Display this help.
+	            -V     Show version.
+
+USAGETXT
+}
+
+
+# Options
+#
+
+while getopts :hV flag
+	do
+    case "$flag" in
+    (h) usage; exit 0;;
+    (V) echo "$SCRIPT_VERSION"; exit 0;;
+#   (e) EXAMPLE_OPTION_SWITCH=1;;			# Add e to getopts string.
+#   (f) EXAMPLE_OPTION_VARIABLE="$OPTARG";;		# Add f: to getopts string.
+    (*) echo "Invalid option, use -h for help."; exit 1;;
+    esac
+	done
+
+shift $(($OPTIND - 1))
+
+
+# Check for argument
+#
+
+if [ -n "$1" ]
+then
+  VAR1=$1
+else echo "VAR1 not present, use -h for help."; exit 1
+fi
+
+
+# Main script.
+#
+
+echo "Main script here"
+echo VAR1="$VAR1"
+exit 0
+
+DEBUG_OUTPUT
+) > "$NEW_SCRIPT_FILENAME"
+
+chmod +x "$NEW_SCRIPT_FILENAME"
+echo "New script $NEW_SCRIPT_FILENAME created."
+exit 0
