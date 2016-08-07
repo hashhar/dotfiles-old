@@ -40,6 +40,9 @@ stow -R mpd
 # Nano syntax highlight files
 stow -R nano
 
+# Neovim and Vim
+stow -R neovim
+
 # ncmpcpp
 stow -R ncmpcpp
 
