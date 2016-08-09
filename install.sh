@@ -27,6 +27,9 @@ crontab cron.install
 # Cava
 stow -R cava
 
+# Curl
+stow -R curl
+
 # Fonts
 stow -R fonts
 fc-cache -f

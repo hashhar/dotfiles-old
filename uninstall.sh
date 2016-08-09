@@ -27,6 +27,9 @@ printf "\nNOTE: You may have to manually restore your crontab, a backup has been
 # Cava
 stow -D cava
 
+# Curl
+stow -D curl
+
 # Fonts
 stow -D fonts
 fc-cache -f
