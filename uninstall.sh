@@ -20,7 +20,11 @@ sudo stow -D -t /root bash
 stow -D BitDay
 crontab -l > cron.install
 sed -i '/BitDay/d' cron.install
-printf "# BitDay wallpaper rotation\n0        *       *       *       *       ${HOME}/.config/BitDay/change.sh\n@reboot                                  ${HOME}/.config/BitDay/change.sh\n" >> cron.install
+cat << EOF >> cron.install
+# BitDay wallpaper rotation
+0        *       *       *       *       ${HOME}/.config/BitDay/change.sh
+@reboot                                  ${HOME}/.config/BitDay/change.sh
+EOF
 sed -n '/BitDay/!p' cron.install > cron.backup
 printf "\nNOTE: You may have to manually restore your crontab, a backup has been saved to cron.backup in the current directory.\n\n"
 
@@ -34,6 +38,12 @@ stow -D curl
 stow -D fonts
 fc-cache -f
 
+# i3
+stow -D i3
+
+# irsii
+stow -D irsii
+
 # Custom binary scripts
 stow -D magic-bin
 
@@ -43,14 +53,24 @@ stow -D mpd
 # Nano syntax highlight files
 stow -D nano
 
-# Neovim and Vim
-stow -D neovim
-
 # ncmpcpp
 stow -D ncmpcpp
 
+# neofetch
+stow -D neofetch
+
+# Neovim and Vim
+stow -D neovim
+
 # Redshift GTK
 stow -D redshift
+
+# Tmux
+stow -D tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Weechat
+stow -D weechat
 
 # Supporting stuff
 # FASD
