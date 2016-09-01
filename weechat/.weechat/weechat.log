@@ -1,0 +1,23 @@
+[2016-05-22 03:37:54] WeeChat 1.5 (compiled on May  1 2016 13:20:27)
+[2016-05-22 03:37:54] Reading configuration file sec.conf
+[2016-05-22 03:37:54] Reading configuration file weechat.conf
+[2016-05-22 03:37:54] Reading configuration file plugins.conf
+[2016-05-22 03:37:54] Reading configuration file charset.conf
+[2016-05-22 03:37:54] Reading configuration file exec.conf
+[2016-05-22 03:37:54] Reading configuration file trigger.conf
+[2016-05-22 03:37:54] Reading configuration file aspell.conf
+[2016-05-22 03:37:54] Reading configuration file alias.conf
+[2016-05-22 03:37:54] Reading configuration file xfer.conf
+[2016-05-22 03:37:54] Reading configuration file irc.conf
+[2016-05-22 03:37:54] Reading configuration file script.conf
+[2016-05-22 03:38:03] Writing configuration file plugins.conf
+[2016-05-22 03:38:03] Writing configuration file xfer.conf
+[2016-05-22 03:38:03] Writing configuration file irc.conf
+[2016-05-22 03:38:03] Writing configuration file exec.conf
+[2016-05-22 03:38:03] Writing configuration file charset.conf
+[2016-05-22 03:38:03] Writing configuration file script.conf
+[2016-05-22 03:38:03] Writing configuration file trigger.conf
+[2016-05-22 03:38:03] Writing configuration file aspell.conf
+[2016-05-22 03:38:03] Writing configuration file alias.conf
+[2016-05-22 03:38:03] Writing configuration file weechat.conf
+[2016-05-22 03:38:03] Writing configuration file sec.conf
