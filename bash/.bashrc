@@ -230,6 +230,9 @@ export PATH="$FAKE_HOME/.local/git/PathPicker/:$PATH"
 ##### github.com/clvv/fasd ################################
 eval "$(fasd --init auto)"
 
+#### github.com/tmuxinator/tmuxinator #####################
+. ${FAKE_HOME}/.local/src/tmuxinator.bash
+
 # INSTALLED SOFTWARE
 ###############################################################################
 

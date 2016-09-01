@@ -85,4 +85,7 @@ alias pcc="xsel -b <"
 alias beep="cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/complete.oga 1>/dev/null 2>&1"
 
 # Delete the currently playing song
-alias deletecurrent='rm ~/Music/"$(mpc current -f %file%)"'
+alias deletesong='rm -i ~/Music/"$(mpc current -f %file%)"'
+
+# Delete the current wallpaper
+alias deletewall='rm "$(sed -n -e "s/^.*'"'"'\(.*\)'"'"'.*$/\1/p" < ~/.fehbg)"'
