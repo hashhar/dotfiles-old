@@ -1,0 +1,36 @@
+#!/usr/bin/env sh
+
+usage()
+{
+	notify-send 'i3Blocks: Battery block configured improperly. See the documentation at https://github.com/hashhar/i3blocks-blocklets'
+}
+
+# Default values
+format='+%d %b %Y %a %T'
+#interval=5
+
+# Start parsing arguments (If you are thinking why I did not use getopts, see "http://stackoverflow.com/questions/11517139/optional-option-argument-with-getopts/29022709#29022709")
+while true; do
+	case $1 in
+#		-i) shift
+#			case $1 in
+#				*[!0-9]* | "") ;;
+#				*) interval=${1}; shift ;;
+#			esac ;;
+		-f) shift
+			case $1 in
+				-*) ;;
+				*) format="${1}"; shift ;;
+			esac ;;
+		-*) usage; exit 33 ;;
+		*) break ;;
+	esac
+done
+
+#if [ $(expr $(date +%S) % ${interval}) -eq 0 ]; then
+#	output=$(date "${format}")
+#	printf '%s' "${output}"
+#else
+#	printf '%s' "${output}"
+#fi
+date "${format}"

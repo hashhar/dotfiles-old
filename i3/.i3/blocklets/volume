@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+# Default values
+CARD="${args[0]}"
+MIXER="${args[1]}"
+SCONTROL="${args[2]}"
+
+if [[ -z "$CARD" ]]; then
+    CARD=0
+fi
+
+if [[ -z "$MIXER" ]]; then
+    MIXER=pulse
+fi
+
+if [[ -z "$SCONTROL" ]]; then
+    SCONTROL=Master
+fi
+
+if [[ "$MIXER" == "alsa" ]]; then
+    case $BLOCK_BUTTON in
+        3) amixer -c "$CARD" -q sset $SCONTROL toggle ;; # right click, mute/unmute
+        4) amixer -c "$CARD" -q sset $SCONTROL 5%+ ;;    # scroll up, increase
+        5) amixer -c "$CARD" -q sset $SCONTROL 5%- ;;    # scroll down, decrease
+    esac
+else
+    case $BLOCK_BUTTON in
+        3) amixer -c "$CARD" -q -D pulse sset $SCONTROL toggle ;; # right click, mute/unmute
+        4) amixer -c "$CARD" -q -D pulse sset $SCONTROL 5%+ ;;    # scroll up, increase
+        5) amixer -c "$CARD" -q -D pulse sset $SCONTROL 5%- ;;    # scroll down, decrease
+    esac
+fi
+
+amixer -c $CARD -M -D $MIXER get $SCONTROL | grep -o -E [[:digit:]]+%

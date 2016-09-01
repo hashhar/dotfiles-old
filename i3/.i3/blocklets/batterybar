@@ -1,0 +1,123 @@
+#!/usr/bin/env sh
+
+usage()
+{
+	notify-send 'i3Blocks: Battery block configured improperly. See the documentation at https://github.com/hashhar/i3blocks-blocklets'
+}
+
+# Default values
+battery_num=0
+battery_urgent=15
+adapter_num=0
+label=""
+label_color="#FFFFFF"
+plugged_in="Plugged In"
+
+# Start parsing arguments (If you are thinking why I did not use getopts, see "http://stackoverflow.com/questions/11517139/optional-option-argument-with-getopts/29022709#29022709")
+while true; do
+	case $1 in
+		-b) shift
+			case $1 in
+				*[!0-9]* | "") ;;
+				*) battery_num=${1}; shift ;;
+			esac ;;
+		-a) shift
+			case $1 in
+				*[!0-9]* | "") ;;
+				*) adapter_num=${1}; shift ;;
+			esac ;;
+		-u) shift
+			case $1 in
+				*[!0-9]* | "") ;;
+				*) battery_urgent=${1}; shift ;;
+			esac ;;
+		-l) shift
+			case $1 in
+				-*) ;;
+				*) label=${1}; shift ;;
+			esac ;;
+		-c) shift
+			case $1 in
+				\#*) ;;
+				*) label_color=${1}; shift ;;
+			esac ;;
+		-p) shift
+			case $1 in
+				-*) ;;
+				*) plugged_in=${1}; shift ;;
+			esac ;;
+		-*) usage; exit 33 ;;
+		*) break ;;
+	esac
+done
+
+battery_info=$(acpi -b | grep "Battery ${battery_num}")
+battery_state=$(printf '%s' "${battery_info}" | grep -wo "Full\|AC\|Charging\|Discharging\|Unknown")
+battery_percentage=$(printf '%s' "${battery_info}" | grep -o '[0-9]\+%' | tr -d '%')
+battery_remaining=$(printf '%s' "${battery_info}" | grep -wo '[0-9]\+:[0-9]\+')
+
+ac_info=$(acpi -a | grep "Adapter ${adapter_num}")
+ac_state=$(printf '%s' "${ac_info}" | grep -wo "on-line\|off-line")
+
+# There are 8 colors that reflect the current battery percentage when discharging
+discharging_color_0="#FF0027"
+discharging_color_1="#F11111"
+discharging_color_2="#FFB923"
+discharging_color_3="#FFD000"
+discharging_color_4="#E4FF00"
+discharging_color_5="#ADFF00"
+discharging_color_6="#6DDD00"
+discharging_color_7="#10BA00"
+
+charging_color="#00AFE3"
+full_color="#00FF00"
+ac_color="#0099FF"
+
+if [ "${battery_percentage}" -le "${battery_urgent}" ];then
+	if [ "${battery_state}" = "Discharging" -o "${battery_state}" = "Unknown" ]; then
+		notify-send -u critical -t 10000 'Your battery is very low!!!'
+	fi
+fi
+
+case "${battery_state}" in
+	"Charging")
+		color="${charging_color}"
+	;;
+	"Discharging"|"Unknown")
+		if [ "${battery_percentage}" -ge 0 -a "${battery_percentage}" -lt "${battery_urgent}" ]; then
+			color="$discharging_color_0"
+		elif [ "${battery_percentage}" -ge "${battery_urgent}" -a "${battery_percentage}" -lt 20 ]; then
+			color="${discharging_color_1}"
+		elif [ "${battery_percentage}" -ge 20 -a "${battery_percentage}" -lt 30 ]; then
+			color="${discharging_color_2}"
+		elif [ "${battery_percentage}" -ge 30 -a "${battery_percentage}" -lt 40 ]; then
+			color="${discharging_color_3}"
+		elif [ "${battery_percentage}" -ge 40 -a "${battery_percentage}" -lt 60 ]; then
+			color="${discharging_color_4}"
+		elif [ "${battery_percentage}" -ge 60 -a "${battery_percentage}" -lt 70 ]; then
+			color="${discharging_color_5}"
+		elif [ "${battery_percentage}" -ge 70 -a "${battery_percentage}" -lt 80 ]; then
+			color="${discharging_color_6}"
+		elif [ "${battery_percentage}" -ge 80 ]; then
+			color="${discharging_color_7}"
+		fi
+	;;
+	"Full")
+		color="${full_color}"
+	;;
+	"AC")
+		color="${ac_color}"
+	;;
+	* )
+		color="${ac_color}"
+esac
+
+if [ "${battery_state}" = "Unknown" ]; then
+	printf '%s' "<span foreground=\"${full_color}\">?</span>"
+elif [ "${ac_state}" = "on-line" -a "x${battery_state}" = "x" ]; then
+	printf '%s' "<span foreground=\"${color}\">${plugged_in}</span>"
+elif [ "${battery_percentage}" = "100" ]; then
+	printf '%s' "<span foreground=\"${label_color}\">${label}</span><span foreground=\"${color}\">${battery_percentage}%</span>"
+else
+	printf '%s' "<span foreground=\"${label_color}\">${label}</span><span foreground=\"${color}\">${battery_percentage}% (${battery_remaining})</span>"
+fi

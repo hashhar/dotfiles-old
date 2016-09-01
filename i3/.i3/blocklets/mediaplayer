@@ -1,0 +1,37 @@
+#!/bin/bash
+
+#output=$(mpc current -f "[[%artist% - ]%title%]")
+## If the output is empty, we need to use basename and filename
+#if [ "x$output" = "x" ]; then
+#    output=$(basename "$(mpc current -f "[%file%]")")
+#fi
+#echo "$output"
+#
+#case $BLOCK_BUTTON in
+#    1) mpc toggle ;; # left click toggles play/pause
+#    4) mpc prev ;;   # scroll up goes previous
+#    5) mpc next ;;   # scroll down goes next
+#esac
+
+artist=$(mpc current -f "[%artist%]")
+title=$(mpc current -f "[%title%]")
+
+output="[ $artist ] - $title"
+
+# If the artist and title are empty, we need to use basename and filename
+if [ "x$output" = "x[  ] - " ]; then
+    output=$(basename "$(mpc current -f "[%file%]")")
+# If artist empty
+elif [ "x$artist" = "x" ]; then
+    output="$title"
+# If title empty
+elif [ "x$title" = "x" ]; then
+    output="[ $artist  ] - "$(basename "$(mpc current -f "[%file%]")")
+fi
+echo "$output"
+
+case $BLOCK_BUTTON in
+    3) mpc toggle ;; # right click toggles play/pause
+    4) mpc prev ;;   # scroll up goes previous
+    5) mpc next ;;   # scroll down goes next
+esac
