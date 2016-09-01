@@ -619,11 +619,12 @@ Plug 'latex-box-team/latex-box'                  " Toolbox for LaTeX
 Plug 'vim-latex/vim-latex'                       " Enhanced LaTeX support
 
 Plug 'PotatoesMaster/i3-vim-syntax'              " Syntax files for i3 configuration files
+Plug 'tmux-plugins/vim-tmux'                     " Syntax files for tmux.conf
 
 " Code Completion
 """""""""""""""""""""""""""""""""""""""
 Plug 'raimondi/delimitMate'                      " Insert mode autocompletion for quotes, parenthesis, brackets etc.
-Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.vim/plugged/YouCompleteMe && ./install.py --gocode-completer --tern-completer --clang-completer'} " Semantic autocompletion
+Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.vim/plugged/YouCompleteMe && ./install.py --tern-completer --clang-completer'} " Semantic autocompletion
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'} " Generates config files for YCM and ColorCoded (NOTE: Default branch is called 'stable')
 Plug 'SirVer/ultisnips'                          " Snippets for vim
 Plug 'honza/vim-snippets'                        " Legacy vim snippets
@@ -651,13 +652,14 @@ Plug 'oguzbilgic/sexy-railscasts-theme'
 " Code Display
 """""""""""""""""""""""""""""""""""""""
 "Plug 'Yggdroot/indentLine'             " Mark indents and leading spaces
-Plug 'nathanaelkane/vim-indent-guides' " Mark indent levels
+"Plug 'nathanaelkane/vim-indent-guides' " Mark indent levels
 Plug 'majutsushi/tagbar'               " Display tags ordered by scope
 Plug 'ntpeters/vim-better-whitespace'  " Better whitespace highlighting
 Plug 'eapache/rainbow_parentheses.vim' " Rainbow parentheses support
 
 " Integrations
 """""""""""""""""""""""""""""""""""""""
+Plug 'tmux-plugins/vim-tmux-focus-events' " FocusGained and FocusLost autocommand events are not working in terminal vim. This plugin restores them when using vim inside Tmux.
 Plug 'tpope/vim-eunuch'                " Common unix commands from vim including SudoWrite
 Plug 'tpope/vim-fugitive'              " Git commands from within vim
 Plug 'junegunn/gv.vim'                 " Git commit browser
@@ -816,7 +818,7 @@ augroup END
 " UltiSnips completion function that tries to expand a snippet. If there's no
 " snippet for expanding, it checks for completion window and if it's
 " shown, selects first element. If there's no completion window it tries to
-" jump to next placeholder. If there's no placeholder it just returns TAB key 
+" jump to next placeholder. If there's no placeholder it just returns TAB key
 let g:UltiSnipsExpandTrigger       = "<tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
@@ -841,4 +843,20 @@ au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=
 " apt-get install shellcheck
 autocmd! BufWritePost * Neomake
 
-let g:ycm_global_ycm_extra_conf = '/home/ashhar/ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '/home/ashhar/.config/nvim/.ycm_extra_conf.py'
+
+nunmap 
+nmap  <Plug>(ctrlp)
+
+
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+    " Use Ag over Grep
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
+
+    " ag is fast enough that CtrlP doesn't need to cache
+    let g:ctrlp_use_caching = 0
+endif
