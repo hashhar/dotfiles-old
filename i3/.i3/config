@@ -654,9 +654,9 @@ set           $dev_num                 14
 # Two finger scroll
 exec          xinput --set-prop $dev_num "Synaptics Two-Finger Scrolling" 1 1
 # Turn on corner coasting, edge scrolling
-exec          xinput --set-prop $dev_num "Synaptics Edge Scrolling" 1 1 1
+exec          xinput --set-prop $dev_num "Synaptics Edge Scrolling" 1 1 0
 # Set kinetic scroll (defaults are 20, 50)
-exec          xinput --set-prop $dev_num "Synaptics Coasting Speed" "1.0" "0.0"
+exec          xinput --set-prop $dev_num "Synaptics Coasting Speed" "20.0" "20.0"
 # Turn on natural scrolling (default values are 111, 30)
 exec          xinput --set-prop $dev_num "Synaptics Scrolling Distance" -50, 30
 # Turn on palm detection
