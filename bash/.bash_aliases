@@ -20,6 +20,9 @@ alias active='grep -v -e "^$" -e"^ *#"'
 # Neofetch
 alias fetch='neofetch --ascii_colors 4 5 7 6'
 
+# Open a terminal in the same directory as the CWD of the focused window
+alias nte='$FAKE_HOME/.i3/scripts/getCurrentWindowCWD.sh'
+
 # Find current DPI settings from multiple sources
 alias getdpi='cat /var/log/Xorg.0.log | grep DPI; xdpyinfo | grep dots; xrdb -query | grep dpi'
 
@@ -88,4 +91,4 @@ alias beep="cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/complete.o
 alias deletesong='rm -i ~/Music/"$(mpc current -f %file%)"'
 
 # Delete the current wallpaper
-alias deletewall='rm "$(sed -n -e "s/^.*'"'"'\(.*\)'"'"'.*$/\1/p" < ~/.fehbg)"'
+alias deletewall='rm -i "$(sed -n -e "s/^.*'"'"'\(.*\)'"'"'.*$/\1/p" < ~/.fehbg)"'
