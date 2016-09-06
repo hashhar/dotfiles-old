@@ -118,10 +118,15 @@ fi
 
 # CUSTOMIZATIONS TO SHELL
 ###############################################################################
-##### Fancy startup #######################################
+FAKE_HOME="/home/ashhar"
+export PATH="/usr/games:$PATH"
 
+##### Fancy startup #######################################
 cmatrix -sbu 9
 neofetch --image "ascii" --ascii_distro "Ubuntu-GNOME"
+if [ -x /usr/games/cowsay -a -x /usr/games/fortune ]; then
+    fortune -eac | tee >(head -n 1 >> "${FAKE_HOME}/.local/logs/fortune-category-log") | tail -n +3 | cowsay -f "$(find /usr/share/cowsay/cows/ -type f | sort -R | head -1)" -W $((COLUMNS - 10)) | lolcat
+fi
 
 ##### Simple colourful prompt #############################
 bash_prompt_command()
@@ -227,8 +232,6 @@ man() {
 
 # LOCAL INSTALLATIONS
 ###############################################################################
-FAKE_HOME="/home/ashhar"
-
 ##### github.com/arialdomartini/oh-my-git #################
 . "$FAKE_HOME/.local/git/oh-my-git/prompt.sh"
 
