@@ -22,8 +22,8 @@ crontab -l > cron.install
 sed -i '/BitDay/d' cron.install
 cat << EOF >> cron.install
 # BitDay wallpaper rotation
-0        *       *       *       *       ${HOME}/.config/BitDay/change.sh
-@reboot                                  ${HOME}/.config/BitDay/change.sh
+0        *         *       *       *       ${HOME}/.config/BitDay/change.sh
+@reboot                                    ${HOME}/.config/BitDay/change.sh
 EOF
 sed -n '/BitDay/!p' cron.install > cron.backup
 printf "\nNOTE: You may have to manually restore your crontab, a backup has been saved to cron.backup in the current directory.\n\n"

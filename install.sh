@@ -22,8 +22,8 @@ crontab -l > cron.install
 sed -i '/BitDay/d' cron.install
 cat << EOF >> cron.install
 # BitDay wallpaper rotation
-0        *       *       *       *       ${HOME}/.config/BitDay/change.sh
-@reboot                                  ${HOME}/.config/BitDay/change.sh
+0        *         *       *       *       ${HOME}/.config/BitDay/change.sh
+@reboot                                    ${HOME}/.config/BitDay/change.sh
 EOF
 crontab cron.install
 #rm cron.backup
