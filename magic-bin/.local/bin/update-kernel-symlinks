@@ -1,0 +1,11 @@
+#!/bin/bash
+
+vmlinuz=$(find /boot -name "vmlinuz-*.efi.signed")
+for vm in $vmlinuz; do
+    if [ "/boot/vmlinuz-$(uname -r).efi.signed" != "$vm" ]; then
+        vmlinuz_old="$vm"
+    fi
+done
+ln -s "/boot/vmlinuz-$(uname -r).efi.signed" /vmlinuz.efi.signed
+ln -s "$vmlinuz_old" /vmlinuz.old.efi.signed
+
