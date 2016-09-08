@@ -608,7 +608,7 @@ bindsym       Ctrl+XF86MonBrightnessDown exec xbacklight -dec 1
 # DPI Settings for font rendering
 exec          xrdb -merge /home/ashhar/.Xresources
 # Wallpaper update
-exec          feh --bg-fill "/home/ashhar/Pictures/backgrounds/Desktop/Resort/Studio Ghibli.png"
+exec          feh --bg-fill "/home/ashhar/Pictures/backgrounds/Desktop/Resort/6i2Bgbr.jpg.png"
 # exec_always   /home/ashhar/.BitDay/change.sh
 exec_always   ~/.i3/scripts/random_wall.sh
 

@@ -31,4 +31,14 @@ else
     esac
 fi
 
-amixer -c $CARD -M -D $MIXER get $SCONTROL | grep -o -E [[:digit:]]+%
+states=$(amixer -c $CARD -M -D $MIXER get $SCONTROL | sed -rn 's/^.*\[(.*)\]$/\1/p')
+
+#amixer -c $CARD -M -D $MIXER get $SCONTROL | grep -o -E "[[:digit:]]+%"
+vol=$(amixer -c $CARD -M -D $MIXER get $SCONTROL | sed -rn 's/.*\[([[:digit:]]+%)\].*/\1/p' | uniq)
+for state in $states; do
+    if [ "$state" = "on" ]; then
+        printf '%s' "$vol" | uniq
+    else
+        printf '%s' "<span foreground=\"#F00\">$vol</span>" | uniq
+    fi
+done

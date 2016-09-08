@@ -117,7 +117,7 @@ if [ "${battery_state}" = "Unknown" ]; then
 elif [ "${ac_state}" = "on-line" -a "x${battery_state}" = "x" ]; then
 	printf '%s' "<span foreground=\"${color}\">${plugged_in}</span>"
 elif [ "${battery_percentage}" = "100" ]; then
-	printf '%s' "<span foreground=\"${label_color}\">${label}</span><span foreground=\"${color}\">${battery_percentage}%</span>"
+	printf '%s' "<span foreground=\"${label_color}\">${label} </span><span foreground=\"${color}\">${battery_percentage}%</span>"
 else
-	printf '%s' "<span foreground=\"${label_color}\">${label}</span><span foreground=\"${color}\">${battery_percentage}% (${battery_remaining})</span>"
+	printf '%s' "<span foreground=\"${label_color}\">${label} </span><span foreground=\"${color}\">${battery_percentage}% (${battery_remaining})</span>"
 fi
