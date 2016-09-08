@@ -662,6 +662,7 @@ Plug 'eapache/rainbow_parentheses.vim' " Rainbow parentheses support
 Plug 'tmux-plugins/vim-tmux-focus-events' " FocusGained and FocusLost autocommand events are not working in terminal vim. This plugin restores them when using vim inside Tmux.
 Plug 'tpope/vim-eunuch'                " Common unix commands from vim including SudoWrite
 Plug 'tpope/vim-fugitive'              " Git commands from within vim
+Plug 'tpope/vim-git'                   " Git runtime files for vim
 Plug 'junegunn/gv.vim'                 " Git commit browser
 Plug 'mhinz/vim-signify'               " Git/svn/hg gutter
 Plug 'airblade/vim-gitgutter'          " Aynschronous git gutter
@@ -691,7 +692,7 @@ Plug 'vim-scripts/Tabmerge'            " Merge windows from two or more tabs
 
 " Commands
 """""""""""""""""""""""""""""""""""""""
-Plug 'ericfortis/vim-indenter'         " Double or halve the indentation
+"Plug 'ericfortis/vim-indenter'         " Double or halve the indentation
 Plug 'terryma/vim-multiple-cursors'    " Multi cursor support
 Plug 'airblade/vim-rooter'             " Change to root directory (.git, project.json, etc.)
 Plug 'scrooloose/nerdcommenter'        " Comment toggle
