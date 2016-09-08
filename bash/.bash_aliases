@@ -92,3 +92,6 @@ alias deletesong='rm -i ~/Music/"$(mpc current -f %file%)"'
 
 # Delete the current wallpaper
 alias deletewall='rm -i "$(sed -n -e "s/^.*'"'"'\(.*\)'"'"'.*$/\1/p" < ~/.fehbg)"'
+
+# Cowsay Fortune
+alias cowfor='fortune -eac | tee >(head -n 1 >> "${FAKE_HOME}/.local/logs/fortune-category-log") | tail -n +3 | cowsay -f "$(find /usr/share/cowsay/cows/ -type f | sort -R | head -1)" -W $((COLUMNS - 10)) | lolcat'

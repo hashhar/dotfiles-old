@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Creates a new issue file with a random quote and places it on /etc/issue
+
+ASCII=${HOME}/dotfiles/ascii/ryu.color.ansi
+TEMP=/tmp/tempfortune
+ISSUE=/tmp/tempissue
+FAKE_HOME="/home/ashhar"
+
+#cat "$ASCII" > /tmp/tempissue
+fortune -eac | tee >(head -n 1 >> "${FAKE_HOME}/.local/logs/fortune-category-log") | tail -n +3 | cowsay -f "$(find /usr/share/cowsay/cows/ -type f | sort -R | head -1)" -W 160 | lolcat > $TEMP
+#fortune calvin >> $DIR/tempfortune
+# For centering images
+#sed -i 's/^/                                                            /' $TEMP
+printf '%s\n' "\\s - \\m - Kernel \\r" > $ISSUE
+printf '%s\n' "\\n@\\o" >> $ISSUE
+{ cat $TEMP; echo "    "; echo "    "; } >> $ISSUE
+sudo cp $ISSUE /etc/issue
+

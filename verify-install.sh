@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-find . -maxdepth 1 -type d \! -path "./.git" \! -path "\." -printf '%f\n' | sort > /tmp/modules.txt
+find . -maxdepth 1 -type d \! -path "./.git" \! -path "\." \! -path "./ascii" -printf '%f\n' | sort > /tmp/modules.txt
 
 sed -n "s/^stow\ -R\ \([a-zA-Z0-9-]\+\)$/\1/p" install.sh | sort > /tmp/installer_modules.txt
 
