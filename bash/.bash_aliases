@@ -95,3 +95,6 @@ alias deletewall='rm -i "$(sed -n -e "s/^.*'"'"'\(.*\)'"'"'.*$/\1/p" < ~/.fehbg)
 
 # Cowsay Fortune
 alias cowfor='fortune -eac | tee >(head -n 1 >> "${FAKE_HOME}/.local/logs/fortune-category-log") | tail -n +3 | cowsay -f "$(find /usr/share/cowsay/cows/ -type f | sort -R | head -1)" -W $((COLUMNS - 10)) | lolcat'
+
+# Play a random file using mpv from the current directory
+alias randomtv='smnohup mpv "$(find . -type f ! -name "*.srt" | shuf | head -n 1)"'

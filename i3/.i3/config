@@ -512,6 +512,8 @@ show_marks                             yes
 # =====================================
 assign [class="Firefox" \
        window_type="normal"]           $workspace4
+assign [class="Firefox-trunk" \
+       window_type="normal"]           $workspace4
 assign [class="Nautilus"]              $workspace5
 assign [class="Vmware"]                $workspace6
 
