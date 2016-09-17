@@ -20,7 +20,7 @@ font pango:Consolas 9
 ###############################################################################
 
 # Kill focused window
-bindsym       $mod+Shift+q             kill
+bindsym       $mod+q                   kill
 
 # Change focus - Vim bindings
 bindsym       $mod+j                   focus left
@@ -81,11 +81,11 @@ bindsym       $mod+z                   focus child
 workspace_auto_back_and_forth          yes
 
 # Delay loss of urgent hint after switching workspace
-force_display_urgency_hint             500 ms
+force_display_urgency_hint             3000 ms
 
 # Navigate workspaces next / previous
-bindsym       $mod+Shift+x             workspace next
-bindsym       $mod+Shift+z             workspace prev
+bindsym       $mod+c                   workspace next
+bindsym       $mod+x                   workspace prev
 
 # Create new workspace at the end
 bindsym       $mod+n                   exec --no-startup-id ~/.i3/scripts/new_workspace.sh
@@ -97,66 +97,57 @@ set           $workspace1_2            "1:  2"
 set           $workspace2              "2: "
 set           $workspace2_1            "2:   "
 set           $workspace2_2            "2:    "
-set           $workspace2_3            "2:  "
-set           $workspace2_4            "2:  "
 # Code Editing
 set           $workspace3              "3:  "
 set           $workspace3_1            "3:   "
 set           $workspace3_2            "3:    "
-set           $workspace3_3            "3:  "
-set           $workspace3_4            "3:  "
 # Firefox
 set           $workspace4              "4: "
-set           $workspace4_1            "4: "
-set           $workspace4_2            "4: "
-set           $workspace4_3            "4: "
-set           $workspace4_4            "4: "
+set           $workspace4_1            "4:  "
+set           $workspace4_2            "4:  "
 # File Explorer
 set           $workspace5              "5: "
 # VM
 set           $workspace6              "6: "
 set           $workspace6_1            "6: "
-set           $workspace6_2            "6: "
-set           $workspace6_3            "6: "
-set           $workspace6_4            "6: "
+set           $workspace6_2            "6:   "
 # Chat and Correspondence
 set           $workspace7              "7: "
-set           $workspace7_1            "7: "
-set           $workspace7_2            "7: "
-set           $workspace7_3            "7: "
+set           $workspace7_1            "7:  "
+set           $workspace7_2            "7: "
 # Reading and Study
 set           $workspace8              "8:  "
 # Movies and TV
-set           $workspace9              "9:  "
+set           $workspace9              "9: "
 # Music
 set           $workspace10             "10:  "
 
 # Switch to workspace
 bindsym       $mod+1                   workspace $workspace1
-bindsym       $mod+$alt+1              workspace $workspace1_1
-bindsym       $mod+Ctrl+1              workspace $workspace1_2
+bindsym       $mod+Ctrl+1              workspace $workspace1_1
+bindsym       $mod+$alt+1              workspace $workspace1_2
 
 bindsym       $mod+2                   workspace $workspace2
-bindsym       $mod+$alt+2              workspace $workspace2_1
-bindsym       $mod+Ctrl+2              workspace $workspace2_2
+bindsym       $mod+Ctrl+2              workspace $workspace2_1
+bindsym       $mod+$alt+2              workspace $workspace2_2
 
 bindsym       $mod+3                   workspace $workspace3
-bindsym       $mod+$alt+3              workspace $workspace3_1
-bindsym       $mod+Ctrl+3              workspace $workspace3_2
+bindsym       $mod+Ctrl+3              workspace $workspace3_1
+bindsym       $mod+$alt+3              workspace $workspace3_2
 
 bindsym       $mod+4                   workspace $workspace4
-bindsym       $mod+$alt+4              workspace $workspace4_1
-bindsym       $mod+Ctrl+4              workspace $workspace4_2
+bindsym       $mod+Ctrl+4              workspace $workspace4_1
+bindsym       $mod+$alt+4              workspace $workspace4_2
 
 bindsym       $mod+5                   workspace $workspace5
 
 bindsym       $mod+6                   workspace $workspace6
-bindsym       $mod+$alt+6              workspace $workspace6_1
-bindsym       $mod+Ctrl+6              workspace $workspace6_2
+bindsym       $mod+Ctrl+6              workspace $workspace6_1
+bindsym       $mod+$alt+6              workspace $workspace6_2
 
 bindsym       $mod+7                   workspace $workspace7
-bindsym       $mod+$alt+7              workspace $workspace7_2
 bindsym       $mod+Ctrl+7              workspace $workspace7_2
+bindsym       $mod+$alt+7              workspace $workspace7_2
 
 bindsym       $mod+8                   workspace $workspace8
 
@@ -166,24 +157,24 @@ bindsym       $mod+0                   workspace $workspace10
 
 # Move focused container to workspace
 bindsym       $mod+Shift+1             move container to workspace $workspace1
-bindsym       $mod+Shift+$alt+1        move container to workspace $workspace1_1
-bindsym       $mod+Shift+Ctrl+1        move container to workspace $workspace1_2
+bindsym       $mod+Shift+Ctrl+1        move container to workspace $workspace1_1
+bindsym       $mod+Shift+$alt+1        move container to workspace $workspace1_2
 bindsym       $mod+Shift+2             move container to workspace $workspace2
-bindsym       $mod+Shift+$alt+2        move container to workspace $workspace2_1
-bindsym       $mod+Shift+Ctrl+2        move container to workspace $workspace2_2
+bindsym       $mod+Shift+Ctrl+2        move container to workspace $workspace2_1
+bindsym       $mod+Shift+$alt+2        move container to workspace $workspace2_2
 bindsym       $mod+Shift+3             move container to workspace $workspace3
-bindsym       $mod+Shift+$alt+3        move container to workspace $workspace3_1
-bindsym       $mod+Shift+Ctrl+3        move container to workspace $workspace3_2
+bindsym       $mod+Shift+Ctrl+3        move container to workspace $workspace3_1
+bindsym       $mod+Shift+$alt+3        move container to workspace $workspace3_2
 bindsym       $mod+Shift+4             move container to workspace $workspace4
-bindsym       $mod+Shift+$alt+4        move container to workspace $workspace4_1
-bindsym       $mod+Shift+Ctrl+4        move container to workspace $workspace4_2
+bindsym       $mod+Shift+Ctrl+4        move container to workspace $workspace4_1
+bindsym       $mod+Shift+$alt+4        move container to workspace $workspace4_2
 bindsym       $mod+Shift+5             move container to workspace $workspace5
 bindsym       $mod+Shift+6             move container to workspace $workspace6
-bindsym       $mod+Shift+$alt+6        move container to workspace $workspace6_1
-bindsym       $mod+Shift+Ctrl+6        move container to workspace $workspace6_2
+bindsym       $mod+Shift+Ctrl+6        move container to workspace $workspace6_1
+bindsym       $mod+Shift+$alt+6        move container to workspace $workspace6_2
 bindsym       $mod+Shift+7             move container to workspace $workspace7
-bindsym       $mod+Shift+$alt+7        move container to workspace $workspace7_1
-bindsym       $mod+Shift+Ctrl+7        move container to workspace $workspace7_2
+bindsym       $mod+Shift+Ctrl+7        move container to workspace $workspace7_1
+bindsym       $mod+Shift+$alt+7        move container to workspace $workspace7_2
 bindsym       $mod+Shift+8             move container to workspace $workspace8
 bindsym       $mod+Shift+9             move container to workspace $workspace9
 bindsym       $mod+Shift+0             move container to workspace $workspace10
@@ -204,7 +195,7 @@ bindsym       $mod+Shift+r             restart
 # POWER MANAGEMENT MODE
 ###############################################################################
 #bindsym       $mod+Shift+e             exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym       $mod+Shift+e             exec gsettings set org.gnome.desktop.background show-desktop-icons true; \
+bindsym       $mod+$alt+e              exec gsettings set org.gnome.desktop.background show-desktop-icons true; \
                                        exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' \
                                             -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -242,7 +233,7 @@ mode "resize" {
 # MOUSE EMULATION MODE
 ###############################################################################
 
-bindsym     $mod+$alt+Shift+m        mode "mouse"
+bindsym     $mod+Ctrl+m                mode "mouse"
 
 mode "mouse" {
     # Set your three speeds here
@@ -396,30 +387,30 @@ mode "mpd" {
 # bindsym       $mod+Ctrl+e              exec ~/.i3/scripts/power-menu/power-menu-purple.sh
 
 # Sea Green Theme
-set           $bg-colour               #006767
-set           $inactive-bg-colour      #002f2f
-set           $text-colour             #ffffff
-set           $inactive-text-colour    #888888
-set           $urgent-colour           #00f3f3
-set           $indicator               #c33027
-set           $highlight               #43c5c5
-exec          compton -b --config ~/.i3/compton/compton_sea_green.conf
-bindsym       $mod+u                   exec pkill compton; \
-                                       exec compton -b --config ~/.i3/compton/compton_sea_green.conf
-bindsym       $mod+Ctrl+e              exec ~/.i3/scripts/power-menu/power-menu-sea-green.sh
+# set           $bg-colour               #006767
+# set           $inactive-bg-colour      #002f2f
+# set           $text-colour             #ffffff
+# set           $inactive-text-colour    #888888
+# set           $urgent-colour           #00f3f3
+# set           $indicator               #c33027
+# set           $highlight               #43c5c5
+# exec          compton -b --config ~/.i3/compton/compton_sea_green.conf
+# bindsym       $mod+u                   exec pkill compton; \
+#                                        exec compton -b --config ~/.i3/compton/compton_sea_green.conf
+# bindsym       $mod+Ctrl+e              exec ~/.i3/scripts/power-menu/power-menu-sea-green.sh
 
 # Slate Theme
-# set           $bg-colour               #195465
-# set           $inactive-bg-colour      #081f2d
-# set           $text-colour             #d3ebe9
-# set           $inactive-text-colour    #98d1ce
-# set           $urgent-colour           #26a98b
-# set           $indicator               #c33027
-# set           $highlight               #00aaaa
-# exec          compton -b --config ~/.i3/compton/compton_slate.conf
-# bindsym       $mod+u                   exec pkill compton; \
-#                                        exec compton -b --config ~/.i3/compton/compton_slate.conf
-# bindsym       $mod+Ctrl+e              exec ~/.i3/scripts/power-menu/power-menu-slate.sh
+set           $bg-colour               #195465
+set           $inactive-bg-colour      #081f2d
+set           $text-colour             #d3ebe9
+set           $inactive-text-colour    #98d1ce
+set           $urgent-colour           #26a98b
+set           $indicator               #c33027
+set           $highlight               #00aaaa
+exec          compton -b --config ~/.i3/compton/compton_slate.conf
+bindsym       $mod+u                   exec pkill compton; \
+                                       exec compton -b --config ~/.i3/compton/compton_slate.conf
+bindsym       $mod+Ctrl+e              exec ~/.i3/scripts/power-menu/power-menu-slate.sh
 
 # Sugar Theme
 # set           $bg-colour               #7f2233
@@ -517,8 +508,6 @@ hide_edge_borders                      none
 # Show window marks within window decoration
 show_marks                             yes
 
-for_window [title="cava"]              border pixel 0
-
 # FIXED WORKSPACES
 # =====================================
 assign [class="Firefox" \
@@ -609,8 +598,6 @@ bindsym       Ctrl+XF86MonBrightnessDown exec xbacklight -dec 1
 exec          xrdb -merge /home/ashhar/.Xresources
 # Wallpaper update
 exec          feh --bg-fill "/home/ashhar/Pictures/backgrounds/Desktop/Resort/6i2Bgbr.jpg.png"
-# exec_always   /home/ashhar/.BitDay/change.sh
-exec_always   ~/.i3/scripts/random_wall.sh
 
 # Hide nautilus desktop icons
 exec_always   gsettings set org.gnome.desktop.background show-desktop-icons false
@@ -620,19 +607,22 @@ exec          --no-startup-id nm-applet
 
 # Start xautolock to lock screen after 5 minutes and to suspend after 30 minutes
 exec          xautolock -time 5 -locker '/home/ashhar/.i3/scripts/cool-i3-lock' -detectsleep \
-                        -killtime 30 -killer 'pm-suspend-hybrid' \
+                        -killtime 30 -killer 'pm-suspend' \
                         -notify 30 -notifier "notify-send -u normal -t 10000 -- 'LOCKING screen in 30 seconds'" &
 
 exec          mpd
 
-# exec          gtk-redshift
+exec          gtk-redshift
 
 # Start ncmpcpp on workspace 10
-exec          --no-startup-id i3-msg 'workspace $workspace10, exec i3-sensible-terminal -e ncmpcpp, $workspace10'
+exec          --no-startup-id i3-msg 'workspace $workspace10, exec i3-sensible-terminal -e sh -c "PATH=/home/ashhar/.local/bin/:$PATH ncmpcpp", $workspace10'
 
 # Last.fm scrobbling for mpd
 exec          >~/.mpdscribble/log
 exec          mpdscribble --log ~/.mpdscribble/log --conf ~/.mpdscribble/mpdscribble.conf
+
+# exec_always   /home/ashhar/.BitDay/change.sh
+exec_always   ~/.i3/scripts/random_wall.sh
 
 # SHORTCUT KEYS FOR APPLICATIONS
 # =====================================
@@ -640,7 +630,13 @@ exec          mpdscribble --log ~/.mpdscribble/log --conf ~/.mpdscribble/mpdscri
 bindsym       Print                    exec scrot --multidisp '%Y-%m-%d_%H-%M-%S_$wx$h.png' \
                                        -e 'mv $f --target ~/Pictures/Screenshots/' \
                                        && exec notify-send 'Screenshot taken'
+
 bindsym       Ctrl+Print               exec sleep 0.2 && \
+                                       scrot --select --multidisp --focused '%Y-%m-%d_%H-%M-%S_$wx$h.png' \
+                                       -e 'mv $f --target ~/Pictures/Screenshots/' \
+                                       && exec notify-send 'Screenshot taken'
+
+bindsym       $alt+Print               exec sleep 0.2 && \
                                        scrot --select --multidisp '%Y-%m-%d_%H-%M-%S_$wx$h.png' \
                                        -e 'mv $f --target ~/Pictures/Screenshots/' \
                                        && exec notify-send 'Screenshot taken'
@@ -668,7 +664,7 @@ exec          xinput --set-prop $dev_num "Synaptics Palm Detection" 1
 for_window [class="^.*"]               border pixel 1
 
 smart_borders                          on
-gaps inner                             15
+gaps inner                             10
 gaps outer                             0
 
 # Workspace Overrides
@@ -691,12 +687,12 @@ mode "$mode_gaps" {
 }
 
 mode "$mode_gaps_inner" {
-    bindsym   plus                     gaps inner current plus 5
-    bindsym   minus                    gaps inner current minus 5
+    bindsym   plus                     gaps inner current plus 1
+    bindsym   minus                    gaps inner current minus 1
     bindsym   0                        gaps inner current set 0
 
-    bindsym   Shift+plus               gaps inner all plus 5
-    bindsym   Shift+minus              gaps inner all minus 5
+    bindsym   Shift+plus               gaps inner all plus 1
+    bindsym   Shift+minus              gaps inner all minus 1
     bindsym   Shift+0                  gaps inner all set 0
 
     bindsym   Return                   mode "default"
@@ -704,14 +700,15 @@ mode "$mode_gaps_inner" {
 }
 
 mode "$mode_gaps_outer" {
-    bindsym   plus                     gaps outer current plus 5
-    bindsym   minus                    gaps outer current minus 5
+    bindsym   plus                     gaps outer current plus 1
+    bindsym   minus                    gaps outer current minus 1
     bindsym   0                        gaps outer current set 0
 
-    bindsym   Shift+plus               gaps outer all plus 5
-    bindsym   Shift+minus              gaps outer all minus 5
+    bindsym   Shift+plus               gaps outer all plus 1
+    bindsym   Shift+minus              gaps outer all minus 1
     bindsym   Shift+0                  gaps outer all set 0
 
     bindsym   Return                   mode "default"
     bindsym   Escape                   mode "default"
 }
+
