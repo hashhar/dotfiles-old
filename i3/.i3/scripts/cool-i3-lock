@@ -17,4 +17,4 @@ convert $ICON -scale 50% $ICON
 }
 convert $IMAGE $TEXT -gravity center -geometry +0+200 -composite $IMAGE
 #convert $IMAGE $ICON -gravity center -composite -matte $IMAGE
-i3lock-mod -b -e -i $IMAGE -R 150 -F 50
+i3lock-mod -b -e -i $IMAGE -R 125 -F 40

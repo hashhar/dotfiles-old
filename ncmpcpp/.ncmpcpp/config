@@ -125,7 +125,7 @@ visualizer_type = spectrum
 ## Time of inactivity (in seconds) after playlist
 ## highlighting will be disabled (0 = always on).
 ##
-playlist_disable_highlight_delay = 0
+playlist_disable_highlight_delay = 10
 #
 ## Defines how long messages are supposed to be visible.
 ##
@@ -226,7 +226,7 @@ message_delay_time = 3
 ##
 ## Note: attributes are not supported for the following variables.
 ##
-#song_window_title_format = {%a - }{%t}|{%f}
+song_window_title_format = ncmpcpp
 ##
 ## Note: Below variables are used for sorting songs in browser.
 ## The sort mode determines how songs are sorted, and can be used
@@ -285,7 +285,7 @@ song_columns_list_format = (6f)[green]{NE} (20)[]{a} (50)[white]{t|f:Title} (20)
 ## Note: Custom command that will be executed each
 ## time song changes. Useful for notifications etc.
 ##
-#execute_on_song_change = ""
+execute_on_song_change = 'notify-mpd'
 #
 #playlist_show_mpd_host = no
 #
