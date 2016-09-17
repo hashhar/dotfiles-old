@@ -38,6 +38,9 @@ stow -D curl
 stow -D fonts
 fc-cache -f
 
+# Git
+stow -D git
+
 # i3
 stow -D i3
 
@@ -71,6 +74,9 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Weechat
 stow -D weechat
+
+# Xresources
+stow -D Xresources
 
 # Supporting stuff
 # FASD
