@@ -146,7 +146,7 @@ bindsym       $mod+Ctrl+6              workspace $workspace6_1
 bindsym       $mod+$alt+6              workspace $workspace6_2
 
 bindsym       $mod+7                   workspace $workspace7
-bindsym       $mod+Ctrl+7              workspace $workspace7_2
+bindsym       $mod+Ctrl+7              workspace $workspace7_1
 bindsym       $mod+$alt+7              workspace $workspace7_2
 
 bindsym       $mod+8                   workspace $workspace8
