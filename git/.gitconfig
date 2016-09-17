@@ -1,0 +1,29 @@
+[user]
+	email = hashhar@outlook.com
+	name = Ashhar Hasan
+
+[push]
+	default = simple
+
+[credential]
+	helper = cache --timeout=3600
+;[credential "https://github.com"]
+	;username = hashhar
+
+[alias]
+	dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+
+[commit]
+	template = ~/.gitmessage
+
+;[url "https://github.com/"]
+	;insteadOf = git@github.com:
+;[url "https://"]
+	;insteadOf = git://
+;[url "https://<GITUSERNAME>@"]
+	;insteadOf = git://
