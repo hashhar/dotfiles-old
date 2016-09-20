@@ -8,15 +8,20 @@ sudo systemctl stop mpd.socket
 sudo systemctl mask mpd.socket
 
 # Add a desktop file in ~/.config/autostart to start mpd on login as current user
-if [ -d "$HOME/.config/autostart" ]
-then
-    printf "[Desktop Entry]\nEncoding=UTF-8\nType=Application\nName=Music Player Daemon\nComment=Server for playing audio files\nExec=mpd\nStartupNotify=false\nTerminal=false\nHidden=false\n" > "$HOME/.config/autostart/mpd.desktop"
-else
-    mkdir -p "$HOME/.config/autostart"
-    printf "[Desktop Entry]\nEncoding=UTF-8\nType=Application\nName=Music Player Daemon\nComment=Server for playing audio files\nExec=mpd\nStartupNotify=false\nTerminal=false\nHidden=false\n" > "$HOME/.config/autostart/mpd.desktop"
-fi
+mkdir -p "$HOME/.config/autostart"
+cat << 'EOF' > "$HOME/.config/autostart/mpd.desktop"
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Music Player Daemon
+Comment=Server for playing audio files
+Exec=mpd
+StartupNotify=false
+Terminal=false
+Hidden=false
+EOF
 
-sudo apt-get install mpdscribble
+sudo apt install mpdscribble
 
 if [ -d "$HOME/.mpdscribble" ]
 then
@@ -31,10 +36,15 @@ sudo systemctl stop mpdscribble
 sudo systemctl mask mpdscribble
 
 # Add a desktop file in ~/.config/autostart to start mpdscribble on login as current user
-if [ -d "$HOME/.config/autostart" ]
-then
-    printf "[Desktop Entry]\nEncoding=UTF-8\nType=Application\nName=MPD Scribble\nComment=Scrobbles files from MPD to Last.fm\nExec=mpdscribble --log ${HOME}/.mpdscribble/log --conf ${HOME}/.mpdscribble/mpdscribble.conf\nStartupNotify=false\nTerminal=false\nHidden=false\n" > "$HOME/.config/autostart/mpdscribble.desktop"
-else
-    mkdir -p "$HOME/.config/autostart"
-    printf "[Desktop Entry]\nEncoding=UTF-8\nType=Application\nName=MPD Scribble\nComment=Scrobbles files from MPD to Last.fm\nExec=mpdscribble --log ${HOME}/.mpdscribble/log --conf ${HOME}/.mpdscribble/mpdscribble.conf\nStartupNotify=false\nTerminal=false\nHidden=false\n" > "$HOME/.config/autostart/mpdscribble.desktop"
-fi
+mkdir -p "$HOME/.config/autostart"
+cat << EOF > "$HOME/.config/autostart/mpdscribble.desktop"
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=MPD Scribble
+Comment=Scrobbles files from MPD to Last.fm
+Exec=mpdscribble --log ${HOME}/.mpdscribble/log --conf ${HOME}/.mpdscribble/mpdscribble.conf
+StartupNotify=false
+Terminal=false
+Hidden=false
+EOF
