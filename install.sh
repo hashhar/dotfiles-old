@@ -29,12 +29,14 @@ crontab cron.install
 #rm cron.backup
 
 # Cava
+mkdir -p ${HOME}/.config/cava
 stow -R cava
 
 # Curl
 stow -R curl
 
 # Fonts
+mkdir -p ${HOME}/.fonts
 stow -R fonts
 fc-cache -f
 
@@ -42,27 +44,41 @@ fc-cache -f
 stow -R git
 
 # i3
+mkdir -p ${HOME}/.i3
 stow -R i3
 
 # irsii
+mkdir -p ${HOME}/.irsii
 stow -R irsii
 
 # Custom binary scripts
+mkdir -p ${HOME}/.local/bin
 stow -R magic-bin
 
 # MPD
+mkdir -p ${HOME}/.config/mpd
 stow -R mpd
 
 # Nano syntax highlight files
+mkdir -p ${HOME}/.nano
 stow -R nano
 
 # ncmpcpp
+mkdir -p ${HOME}/.ncmpcpp
 stow -R ncmpcpp
 
 # neofetch
+mkdir -p ${HOME}/.config/neofetch
 stow -R neofetch
 
 # Neovim and Vim
+mkdir -p ${HOME}/.config/nvim
+if [ ! -e ${HOME}/.vim ]; then
+    ln -s ${HOME}/.config/nvim ${HOME}/.vim
+fi
+if [ ! -e ${HOME}/.vimrc ]; then
+    ln -s ${HOME}/.config/nvim/init.vim ${HOME}/.vimrc
+fi
 stow -R neovim
 
 # Redshift GTK
@@ -73,6 +89,7 @@ stow -R tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Weechat
+mkdir -p ${HOME}/.weechat
 stow -R weechat
 
 # Xresources

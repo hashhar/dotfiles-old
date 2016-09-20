@@ -9,8 +9,8 @@
 #	fi
 #done
 
-git submodule init
-git submodule update
+# git submodule init
+# git submodule update
 
 # Bash (for current user and root user)
 stow -D bash
@@ -29,12 +29,14 @@ sed -n '/BitDay/!p' cron.install > cron.backup
 printf "\nNOTE: You may have to manually restore your crontab, a backup has been saved to cron.backup in the current directory.\n\n"
 
 # Cava
+mkdir -p ${HOME}/.config/cava
 stow -D cava
 
 # Curl
 stow -D curl
 
 # Fonts
+mkdir -p ${HOME}/.fonts
 stow -D fonts
 fc-cache -f
 
@@ -42,27 +44,41 @@ fc-cache -f
 stow -D git
 
 # i3
+mkdir -p ${HOME}/.i3
 stow -D i3
 
 # irsii
+mkdir -p ${HOME}/.irsii
 stow -D irsii
 
 # Custom binary scripts
+mkdir -p ${HOME}/.local/bin
 stow -D magic-bin
 
 # MPD
+mkdir -p ${HOME}/.config/mpd
 stow -D mpd
 
 # Nano syntax highlight files
+mkdir -p ${HOME}/.nano
 stow -D nano
 
 # ncmpcpp
+mkdir -p ${HOME}/.ncmpcpp
 stow -D ncmpcpp
 
 # neofetch
+mkdir -p ${HOME}/.config/neofetch
 stow -D neofetch
 
 # Neovim and Vim
+mkdir -p ${HOME}/.config/nvim
+if [ -e ${HOME}/.vim ]; then
+    rm ${HOME}/.vim
+fi
+if [ -e ${HOME}/.vimrc ]; then
+    rm ${HOME}/.vimrc
+fi
 stow -D neovim
 
 # Redshift GTK
@@ -70,9 +86,10 @@ stow -D redshift
 
 # Tmux
 stow -D tmux
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Weechat
+mkdir -p ${HOME}/.weechat
 stow -D weechat
 
 # Xresources
