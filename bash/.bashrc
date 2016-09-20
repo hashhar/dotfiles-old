@@ -276,4 +276,4 @@ export GOPATH="$FAKE_HOME/dev/golang"
 export PATH="$FAKE_HOME/.local/bin:$PATH"
 
 # Anaconda3
-export PATH="$FAKE_HOME/anaconda3/bin:$PATH"
+export PATH="/opt/anaconda3/bin:$PATH"
