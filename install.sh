@@ -59,6 +59,10 @@ stow -R magic-bin
 mkdir -p ${HOME}/.config/mpd
 stow -R mpd
 
+# Mutt
+mkdir -p ${HOME}/.mutt
+stow -R mutt
+
 # Nano syntax highlight files
 mkdir -p ${HOME}/.nano
 stow -R nano

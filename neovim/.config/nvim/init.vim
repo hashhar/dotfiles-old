@@ -765,6 +765,7 @@ Plug 'brookhong/cscope.vim'            " CScope support
 Plug 'benekastah/neomake'              " Asynchronous make utility
 Plug 'tpope/vim-dispatch'              " Test dipatcher for vim
 Plug 'wakatime/vim-wakatime'           " Wakatime integration
+Plug 'jamessan/vim-gnupg'              " GNUPG integration
 
 " Interface
 """""""""""""""""""""""""""""""""""""""

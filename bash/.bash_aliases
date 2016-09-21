@@ -98,3 +98,6 @@ alias cowfor='fortune -eac | tee >(head -n 1 >> "${FAKE_HOME}/.local/logs/fortun
 
 # Play a random file using mpv from the current directory
 alias randomtv='smnohup mpv "$(find . -type f ! -name "*.srt" | shuf | head -n 1)"'
+
+# Use gpg2 by default in interactive shells
+alias gpg='gpg2'
