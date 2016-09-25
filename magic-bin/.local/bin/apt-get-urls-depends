@@ -7,7 +7,7 @@ fi
 PKG="$1"
 FILE="$2"
 
-printf '%s\n' "Do you want to:\n(1): Download the packages into the current directory\n(2): Download the packages to apt's cache (usually /var/cache/apt/archives/)\n(3): Create a url list"
+echo "Do you want to:\n(1): Download the packages into the current directory\n(2): Download the packages to apt's cache (usually /var/cache/apt/archives/)\n(3): Create a url list\n(4): Print the packages on stdout"
 read choice
 if [ "x$choice" = "x" ]; then
 	printf '%s\n' "Empty input, will exit."
@@ -25,6 +25,8 @@ elif [ "$choice" -eq 3 ]; then
 	fi
 	apt-get --print-uris --yes -d --reinstall install $(apt-rdepends $PKG | grep -v "^ ") | grep "http://" | awk '{ print $1 }' | xargs -I'{}' echo {} > "$FILE"
 	exit $?
+elif [ "$choice" -eq 4 ]; then
+	apt-rdepends $PKG | grep -v "^ "
 else
 	printf '%s\n' "Invalid input, will exit."
 	exit 1

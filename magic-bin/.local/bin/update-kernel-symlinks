@@ -6,6 +6,6 @@ for vm in $vmlinuz; do
         vmlinuz_old="$vm"
     fi
 done
-ln -s "/boot/vmlinuz-$(uname -r).efi.signed" /vmlinuz.efi.signed
-ln -s "$vmlinuz_old" /vmlinuz.old.efi.signed
+ln -sf "/boot/vmlinuz-$(uname -r).efi.signed" /vmlinuz.efi.signed
+ln -sf "$vmlinuz_old" /vmlinuz.old.efi.signed
 

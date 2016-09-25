@@ -599,7 +599,9 @@ bindsym       Ctrl+XF86MonBrightnessDown exec xbacklight -dec 1
 # DPI Settings for font rendering
 exec          xrdb -merge /home/ashhar/.Xresources
 # Wallpaper update
-exec          feh --bg-fill "/home/ashhar/Pictures/backgrounds/Desktop/Resort/6i2Bgbr.jpg.png"
+# exec_always   /home/ashhar/.BitDay/change.sh
+exec_always   ~/.i3/scripts/random_wall.sh
+#exec          feh --bg-fill "/home/ashhar/Pictures/backgrounds/Desktop/Resort/6i2Bgbr.jpg.png"
 
 # Hide nautilus desktop icons
 exec_always   gsettings set org.gnome.desktop.background show-desktop-icons false
@@ -622,9 +624,6 @@ exec          --no-startup-id i3-msg 'workspace $workspace10, exec i3-sensible-t
 # Last.fm scrobbling for mpd
 exec          >~/.mpdscribble/log
 exec          mpdscribble --log ~/.mpdscribble/log --conf ~/.mpdscribble/mpdscribble.conf
-
-# exec_always   /home/ashhar/.BitDay/change.sh
-exec_always   ~/.i3/scripts/random_wall.sh
 
 # SHORTCUT KEYS FOR APPLICATIONS
 # =====================================

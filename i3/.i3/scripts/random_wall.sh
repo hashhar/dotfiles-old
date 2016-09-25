@@ -1,32 +1,31 @@
 #!/bin/bash
 
-Dir="/home/ashhar/Pictures/backgrounds/Desktop/Resort"
+DIR="/home/ashhar/Pictures/backgrounds/Desktop/Resort"
 
-if [ ! -d "$Dir" ]; then
-    echo "Not Exist $Dir"
+if [ ! -d "$DIR" ]; then
+    echo "Not Exist $DIR"
     exit 1
 fi
 
-SetBG () {
-TotalFiles=$( ls -R -1 "$Dir" | wc -l )
-RandomNumber=$(( $RANDOM % $TotalFiles ))
-test ! $RandomNumber = 0 || RandomNumber=1
+setbg () {
+    NUM_FILES=$( find "$DIR" -type f | wc -l )
+    RAND_NUM=$(( RANDOM % NUM_FILES ))
+    test ! $RAND_NUM = 0 || RAND_NUM=1
 
-RandomFile="$( ls -R -1 $Dir | head -n $RandomNumber | tail -n 1)"
+    RAND_FILE="$( find "$DIR" -type f | head -n $RAND_NUM | tail -n 1)"
 
-#echo "Selected File: $RandomFile"
-feh --bg-max "${Dir%/}/${RandomFile}"
+    feh --bg-max "${DIR%/}/${RAND_FILE}"
 }
 
 if [ -f "/tmp/random_wall.lock" ]; then
-    SetBG
+    setbg
     exit 1
 fi
 
 touch /tmp/random_wall.lock
 
 while true; do
-    SetBG
+    setbg
     sleep 3600
     rm /tmp/random_wall.lock
     touch /tmp/random_wall.lock
