@@ -18,7 +18,7 @@ alias pkgg='dpkg --list | grep'
 alias active='grep -v -e "^$" -e"^ *#"'
 
 # Neofetch
-alias fetch='neofetch --ascii_colors 4 5 7 6'
+alias fetch='neofetch --ascii_colors 4 5 7 6 --colors 6 7 6 6 7 7'
 
 # Open a terminal in the same directory as the CWD of the focused window
 alias nte='$FAKE_HOME/.i3/scripts/getCurrentWindowCWD.sh'

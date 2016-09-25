@@ -14,7 +14,7 @@ setbg () {
 
     RAND_FILE="$( find "$DIR" -type f | head -n $RAND_NUM | tail -n 1)"
 
-    feh --bg-max "${DIR%/}/${RAND_FILE}"
+    feh --bg-max "${RAND_FILE}"
 }
 
 if [ -f "/tmp/random_wall.lock" ]; then
