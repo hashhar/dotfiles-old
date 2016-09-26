@@ -101,3 +101,6 @@ alias randomtv='smnohup mpv "$(find . -type f ! -name "*.srt" | shuf | head -n 1
 
 # Use gpg2 by default in interactive shells
 alias gpg='gpg2'
+
+# Delete all docker containers
+alias dockernuke='docker rm $(docker ps -a -q -f status=exited)'
