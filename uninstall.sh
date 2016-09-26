@@ -49,7 +49,7 @@ stow -D i3
 
 # irsii
 mkdir -p ${HOME}/.irsii
-stow -D irsii
+stow -D irssi
 
 # Custom binary scripts
 mkdir -p ${HOME}/.local/bin
@@ -58,6 +58,10 @@ stow -D magic-bin
 # MPD
 mkdir -p ${HOME}/.config/mpd
 stow -D mpd
+
+# Mutt
+mkdir -p ${HOME}/.mutt
+stow -D mutt
 
 # Nano syntax highlight files
 mkdir -p ${HOME}/.nano

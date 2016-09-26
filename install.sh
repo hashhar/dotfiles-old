@@ -49,7 +49,7 @@ stow -R i3
 
 # irsii
 mkdir -p ${HOME}/.irsii
-stow -R irsii
+stow -R irssi
 
 # Custom binary scripts
 mkdir -p ${HOME}/.local/bin
