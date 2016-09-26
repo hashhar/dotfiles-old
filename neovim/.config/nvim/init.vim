@@ -744,6 +744,7 @@ Plug 'majutsushi/tagbar'               " Display tags ordered by scope
 Plug 'ntpeters/vim-better-whitespace'  " Better whitespace highlighting
 Plug 'eapache/rainbow_parentheses.vim' " Rainbow parentheses support
 Plug 'sunaku/vim-hicterm'              " Highlight ncurses color codes for editing weechat configs
+Plug 'chrisbra/csv.vim'                " View csv files properly
 
 " Integrations
 """""""""""""""""""""""""""""""""""""""
