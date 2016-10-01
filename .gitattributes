@@ -43,3 +43,10 @@
 #*.svg text
 *.eps binary
 
+# ===== Custom.gitattributes ===== #
+*.bdf binary
+*.ttf binary
+*.fon binary
+*.pcf.gz binary
+*.otf binary
+
