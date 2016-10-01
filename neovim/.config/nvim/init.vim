@@ -649,7 +649,7 @@ Plug 'hdima/python-syntax'                       " Syntax highlighting for pytho
 " C/C++
 """""""""""""""""""""""""""""""""""""""
 Plug 'octol/vim-cpp-enhanced-highlight'          " Additional syntax highlighting for C++ 11/14
-Plug 'jeaye/color_coded'                         " libclang based syntax highlighting
+Plug 'jeaye/color_coded', { 'do': 'cd ~/.vim/plugged/color_coded && mkdir -p build && cmake .. -DDOWNLOAD_CLANG=0 && make && make install && make clean && make clean_clang' }                        " libclang based syntax highlighting
 Plug 'DoxygenToolkit.vim'                        " DoxyGen supprt for C++
 Plug 'rhysd/vim-clang-format'                    " Run clang-format from within vim
 Plug 'a.vim'                                     " Switch between .cpp and .h files
