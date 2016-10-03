@@ -649,7 +649,7 @@ Plug 'hdima/python-syntax'                       " Syntax highlighting for pytho
 " C/C++
 """""""""""""""""""""""""""""""""""""""
 Plug 'octol/vim-cpp-enhanced-highlight'          " Additional syntax highlighting for C++ 11/14
-Plug 'jeaye/color_coded', { 'do': 'cd ~/.vim/plugged/color_coded && mkdir -p build && cmake .. -DDOWNLOAD_CLANG=0 && make && make install && make clean && make clean_clang' }                        " libclang based syntax highlighting
+Plug 'jeaye/color_coded', { 'do': 'cd ~/.vim/plugged/color_coded && mkdir -p build && cmake . -DDOWNLOAD_CLANG=0 && make && make install && make clean && make clean_clang' }                        " libclang based syntax highlighting
 Plug 'DoxygenToolkit.vim'                        " DoxyGen supprt for C++
 Plug 'rhysd/vim-clang-format'                    " Run clang-format from within vim
 Plug 'a.vim'                                     " Switch between .cpp and .h files
@@ -711,7 +711,7 @@ Plug 'tmux-plugins/vim-tmux'                     " Syntax files for tmux.conf
 " Code Completion
 """""""""""""""""""""""""""""""""""""""
 Plug 'raimondi/delimitMate'                      " Insert mode autocompletion for quotes, parenthesis, brackets etc.
-Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.vim/plugged/YouCompleteMe && ./install.py --tern-completer --clang-completer --gocode-completer'} " Semantic autocompletion
+Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.vim/plugged/YouCompleteMe && /usr/bin/python3 install.py --tern-completer --clang-completer --gocode-completer'} " Semantic autocompletion
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'} " Generates config files for YCM and ColorCoded (NOTE: Default branch is called 'stable')
 Plug 'SirVer/ultisnips'                          " Snippets for vim
 Plug 'honza/vim-snippets'                        " Legacy vim snippets
@@ -935,10 +935,11 @@ au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=
 autocmd! BufWritePost * Neomake
 
 let g:ycm_global_ycm_extra_conf = '/home/ashhar/.config/nvim/.ycm_extra_conf.py'
+"let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+"let g:ycm_server_python_interpreter = '/usr/bin/python'
 
-nunmap 
-nmap  <Plug>(ctrlp)
-
+nunmap <C-P>
+nmap <C-P> <Plug>(ctrlp)
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')

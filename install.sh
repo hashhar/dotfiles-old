@@ -13,10 +13,12 @@ git submodule init
 git submodule update
 
 # Bash (for current user and root user)
+echo "BASH"
 stow -R bash
 sudo stow -R -t /root bash
 
 # BitDay wallpapers
+echo "BitDay"
 stow -R BitDay
 crontab -l > cron.install
 sed -i '/BitDay/d' cron.install
@@ -29,53 +31,64 @@ crontab cron.install
 #rm cron.backup
 
 # Cava
-mkdir -p ${HOME}/.config/cava
+echo "CAVA"
 stow -R cava
 
 # Curl
+echo "CURL"
 stow -R curl
 
 # Fonts
+echo "FONTS"
 mkdir -p ${HOME}/.fonts
 stow -R fonts
 fc-cache -f
 
 # Git
+echo "GIT"
 stow -R git
 
 # i3
-mkdir -p ${HOME}/.i3
+echo "I3"
 stow -R i3
 
-# irsii
-mkdir -p ${HOME}/.irsii
+# irssi
+echo "IRSSI"
+mkdir -p ${HOME}/.irssi
 stow -R irssi
 
 # Custom binary scripts
+echo "MAGIC-BIN"
 mkdir -p ${HOME}/.local/bin
 stow -R magic-bin
 
 # MPD
+echo "MPD"
 mkdir -p ${HOME}/.config/mpd
 stow -R mpd
 
 # Mutt
+echo "MUTT"
 mkdir -p ${HOME}/.mutt
 stow -R mutt
 
 # Nano syntax highlight files
+echo "NANO"
 mkdir -p ${HOME}/.nano
 stow -R nano
 
 # ncmpcpp
+echo "NCMPCPP"
 mkdir -p ${HOME}/.ncmpcpp
 stow -R ncmpcpp
 
 # neofetch
+echo "NEOFETCH"
 mkdir -p ${HOME}/.config/neofetch
 stow -R neofetch
 
 # Neovim and Vim
+echo "VIM"
 mkdir -p ${HOME}/.config/nvim
 if [ ! -e ${HOME}/.vim ]; then
     ln -s ${HOME}/.config/nvim ${HOME}/.vim
@@ -86,17 +99,21 @@ fi
 stow -R neovim
 
 # Redshift GTK
+echo "REDSHIFT"
 stow -R redshift
 
 # Tmux
+echo "TMUX"
 stow -R tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Weechat
+echo "WEECHAT"
 mkdir -p ${HOME}/.weechat
 stow -R weechat
 
 # Xresources
+echo "XRESOURCES"
 stow -R Xresources
 
 # Supporting stuff

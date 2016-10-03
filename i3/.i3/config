@@ -374,17 +374,17 @@ mode "mpd" {
 # bindsym       $mod+Ctrl+e              exec ~/.i3/scripts/power-menu/power-menu-arc-darker.sh
 
 # Purple Theme
-set           $bg-colour               #3a2d4e
-set           $inactive-bg-colour      #1d162a
-set           $text-colour             #ffffff
-set           $inactive-text-colour    #BBBBBB
-set           $urgent-colour           #745d98
-set           $indicator               #eac1aa
-set           $highlight               #ff55b9
-exec          compton -b --config ~/.i3/compton/compton_purple.conf
-bindsym       $mod+u                   exec pkill compton; \
-                                       exec compton -b --config ~/.i3/compton/compton_purple.conf
-bindsym       $mod+Ctrl+e              exec ~/.i3/scripts/power-menu/power-menu-purple.sh
+# set           $bg-colour               #3a2d4e
+# set           $inactive-bg-colour      #1d162a
+# set           $text-colour             #ffffff
+# set           $inactive-text-colour    #BBBBBB
+# set           $urgent-colour           #745d98
+# set           $indicator               #eac1aa
+# set           $highlight               #ff55b9
+# exec          compton -b --config ~/.i3/compton/compton_purple.conf
+# bindsym       $mod+u                   exec pkill compton; \
+#                                        exec compton -b --config ~/.i3/compton/compton_purple.conf
+# bindsym       $mod+Ctrl+e              exec ~/.i3/scripts/power-menu/power-menu-purple.sh
 
 # Sea Green Theme
 # set           $bg-colour               #006767
@@ -400,17 +400,17 @@ bindsym       $mod+Ctrl+e              exec ~/.i3/scripts/power-menu/power-menu-
 # bindsym       $mod+Ctrl+e              exec ~/.i3/scripts/power-menu/power-menu-sea-green.sh
 
 # Slate Theme
-# set           $bg-colour               #195465
-# set           $inactive-bg-colour      #081f2d
-# set           $text-colour             #d3ebe9
-# set           $inactive-text-colour    #98d1ce
-# set           $urgent-colour           #26a98b
-# set           $indicator               #c33027
-# set           $highlight               #00aaaa
-# exec          compton -b --config ~/.i3/compton/compton_slate.conf
-# bindsym       $mod+u                   exec pkill compton; \
-#                                        exec compton -b --config ~/.i3/compton/compton_slate.conf
-# bindsym       $mod+Ctrl+e              exec ~/.i3/scripts/power-menu/power-menu-slate.sh
+set           $bg-colour               #195465
+set           $inactive-bg-colour      #081f2d
+set           $text-colour             #d3ebe9
+set           $inactive-text-colour    #98d1ce
+set           $urgent-colour           #26a98b
+set           $indicator               #c33027
+set           $highlight               #00aaaa
+exec          compton -b --config ~/.i3/compton/compton_slate.conf
+bindsym       $mod+u                   exec pkill compton; \
+                                       exec compton -b --config ~/.i3/compton/compton_slate.conf
+bindsym       $mod+Ctrl+e              exec ~/.i3/scripts/power-menu/power-menu-slate.sh
 
 # Sugar Theme
 # set           $bg-colour               #7f2233

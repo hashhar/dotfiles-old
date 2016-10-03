@@ -2,19 +2,12 @@
 # MPD and mpdscribble files
 .mpdscribble/
 
-mpd/.config/mpd/**
-!mpd/.config/mpd/mpd.conf
-!mpd/.config/mpd/configure.sh
-
+# MAGIC BIN
 magic-bin/.local/bin/jhbuild
-magic-bin/.local/bin/beet
-magic-bin/.local/bin/mid3cp
-magic-bin/.local/bin/mid3iconv
-magic-bin/.local/bin/mid3v2
-magic-bin/.local/bin/moggsplit
-magic-bin/.local/bin/mutagen-inspect
-magic-bin/.local/bin/mutagen-pony
-magic-bin/.local/bin/unidecode
+
+# CRONTABS
+cron.install
+cron.backup
 
 # ===== Global/Linux.gitignore ===== #
 *~
