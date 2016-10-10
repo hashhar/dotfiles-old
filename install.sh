@@ -54,8 +54,11 @@ stow -R i3
 
 # irssi
 echo "IRSSI"
-mkdir -p ${HOME}/.irssi
 stow -R irssi
+
+# Latex
+echo "LaTeX"
+stow -R latex
 
 # Custom binary scripts
 echo "MAGIC-BIN"
@@ -67,14 +70,16 @@ echo "MPD"
 mkdir -p ${HOME}/.config/mpd
 stow -R mpd
 
+# MPDRIS2
+echo "MPDRIS2"
+stow -R mpDris2
+
 # Mutt
 echo "MUTT"
-mkdir -p ${HOME}/.mutt
 stow -R mutt
 
 # Nano syntax highlight files
 echo "NANO"
-mkdir -p ${HOME}/.nano
 stow -R nano
 
 # ncmpcpp
@@ -84,7 +89,6 @@ stow -R ncmpcpp
 
 # neofetch
 echo "NEOFETCH"
-mkdir -p ${HOME}/.config/neofetch
 stow -R neofetch
 
 # Neovim and Vim

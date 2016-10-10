@@ -56,7 +56,7 @@ printinfo () {
 
 # Show more kernel info
 # --kernel_shorthand on/off
-kernel_shorthand="off"
+kernel_shorthand="on"
 
 
 # Distro

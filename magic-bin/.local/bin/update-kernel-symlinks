@@ -8,4 +8,4 @@ for vm in $vmlinuz; do
 done
 ln -sf "/boot/vmlinuz-$(uname -r).efi.signed" /vmlinuz.efi.signed
 ln -sf "$vmlinuz_old" /vmlinuz.old.efi.signed
-
+exit 0

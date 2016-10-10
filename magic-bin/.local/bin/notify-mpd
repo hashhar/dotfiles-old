@@ -1,3 +1,5 @@
 #!/usr/bin/env sh
 
 notify-send -u normal -t 5000 -c Music "$(mpc current)" "$(mpc current -f '[Track: [%disc - ]%track%]')$(mpc current -f '[\nTitle: %title%]')$(mpc current -f '\n[Artist: [%albumartist%][%artist%]]')$(mpc current -f '[\nAlbum: %album%]')"
+# Update i3blocks
+pkill -RTMIN+10 i3blocks
