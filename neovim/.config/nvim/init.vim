@@ -748,6 +748,15 @@ Plug 'chrisbra/csv.vim'                " View csv files properly
 
 " Integrations
 """""""""""""""""""""""""""""""""""""""
+" Vim HardTime
+Plug 'takac/vim-hardtime'
+Plug 'KabbAmine/zeavim.vim', {'on': [
+            \    'Zeavim', 'Docset',
+            \    '<Plug>Zeavim',
+            \    '<Plug>ZVVisSelection',
+            \    '<Plug>ZVKeyDocset',
+            \    '<Plug>ZVMotion'
+            \ ]}
 Plug 'tmux-plugins/vim-tmux-focus-events' " FocusGained and FocusLost autocommand events are not working in terminal vim. This plugin restores them when using vim inside Tmux.
 Plug 'tpope/vim-eunuch'                " Common unix commands from vim including SudoWrite
 Plug 'tpope/vim-fugitive'              " Git commands from within vim

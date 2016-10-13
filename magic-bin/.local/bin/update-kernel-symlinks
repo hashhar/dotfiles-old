@@ -1,11 +1,15 @@
 #!/bin/bash
 
-vmlinuz=$(find /boot -name "vmlinuz-*.efi.signed")
-for vm in $vmlinuz; do
-    if [ "/boot/vmlinuz-$(uname -r).efi.signed" != "$vm" ]; then
-        vmlinuz_old="$vm"
-    fi
-done
-ln -sf "/boot/vmlinuz-$(uname -r).efi.signed" /vmlinuz.efi.signed
+#vmlinuz=$(find /boot -name "vmlinuz-*.efi.signed")
+#for vm in $vmlinuz; do
+#    if [ "/boot/vmlinuz-$(uname -r).efi.signed" == "$vm" ]; then
+#        vmlinuz_old="$vm"
+#    fi
+#done
+vmlinuz=$(find /boot -name "vmlinuz-*.efi.signed" | sort -V)
+vmlinuz_new=$(echo "$vmlinuz" | tail -n 1)
+vmlinuz_old=$(echo "$vmlinuz" | tail -n 2 | head -n 1)
+#ln -sf "/boot/vmlinuz-$(uname -r).efi.signed" /vmlinuz.efi.signed
+ln -sf "$vmlinuz_new" /vmlinuz.efi.signed
 ln -sf "$vmlinuz_old" /vmlinuz.old.efi.signed
 exit 0

@@ -616,8 +616,6 @@ exec          xautolock -time 5 -locker '/home/ashhar/.i3/scripts/cool-i3-lock' 
 
 exec          mpd
 
-exec          gtk-redshift
-
 # Start ncmpcpp on workspace 10
 exec          --no-startup-id i3-msg 'workspace $workspace10, exec i3-sensible-terminal -e sh -c "PATH=/home/ashhar/.local/bin/:$PATH ncmpcpp", $workspace10'
 
