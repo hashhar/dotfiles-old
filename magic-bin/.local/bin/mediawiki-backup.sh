@@ -12,7 +12,7 @@ password: password
 EOF
 }
 
-if [ "$#" -ne 5 ]; then
+if [ "$#" -lt 1 ]; then
 	usage
 	exit 1
 fi
@@ -25,9 +25,13 @@ fi
 
 mkdir -p "${2='~/backup'}"
 FNAME=$(date +%Y-%m-%d)
-mysqldump -u "${4='root'}" --password="${5='password'}" "${3='my_wiki'}" --add-drop-table -B > "/tmp/mediawiki-${FNAME}.sql" 2>/dev/null
-zip --quiet -r "$2/mediawiki-${FNAME}.zip" "$1" "/tmp/mediawiki-${FNAME}.sql"
-mv "/tmp/mediawiki-${FNAME}.sql" "$2"
+#mysqldump -u "${4='root'}" --password="${5='password'}" "${3='my_wiki'}" --add-drop-table -B > "/tmp/mediawiki-${FNAME}.sql" 2>/dev/null
+php maintenance/sqlite.php --backup-to "/tmp/mediawiki-${FNAME}.sqlite"
+cd $1 && \
+	git archive --format=zip --output="$2/mediawiki-${FNAME}.zip" HEAD && \
+	zip --quiet -r "$2/mediawiki-${FNAME}.zip" "/var/www/html/mediawiki-images"
+#zip --quiet -r "$2/mediawiki-${FNAME}.zip" "$1" "/tmp/mediawiki-${FNAME}.sqlite"
+mv "/tmp/mediawiki-${FNAME}.sqlite" "$2"
 
 cd "$2"
 BUPS=$(find "$2" -maxdepth 1 -type f -iname "mediawiki-*")

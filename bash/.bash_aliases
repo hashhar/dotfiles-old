@@ -80,4 +80,4 @@ alias gpg='gpg2'
 alias dockernuke='docker rm $(docker ps -a -q -f status=exited)'
 
 # Vim with norc
-alias nvi='nvim -u NORC'
+alias nvi='nvim -u ~/.vimmini'

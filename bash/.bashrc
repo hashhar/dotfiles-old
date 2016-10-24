@@ -196,6 +196,10 @@ shopt -s cdspell
 shopt -s checkjobs
 # Try hostname completion
 shopt -s hostcomplete
+# Load the history substitution into the readline buffer instead of running it
+shopt -s histverify
+# Add newlines to history instead of semicolons where possible
+shopt -s lithist
 
 export HISTSIZE=1000
 export HISTFILESIZE=10000

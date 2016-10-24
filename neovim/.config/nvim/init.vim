@@ -321,10 +321,10 @@ set formatoptions+=n
 " => Moving around, tabs, windows, buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Get off my lawn
-"nnoremap <Left> :echoe "Use h"<CR>
-"nnoremap <Right> :echoe "Use l"<CR>
-"nnoremap <Up> :echoe "Use k"<CR>
-"nnoremap <Down> :echoe "Use j"<CR>
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
 
 " Don't lose visual selection after shifting
 xnoremap < <gv
@@ -361,22 +361,22 @@ nmap  <expr> <Leader>b  TYToggleBreakMove()
 let g:gmove = "yes"
 onoremap <silent> <expr> j ScreenMovement("j")
 onoremap <silent> <expr> k ScreenMovement("k")
-onoremap <silent> <expr> <Down> ScreenMovement("<Down>")
-onoremap <silent> <expr> <Up> ScreenMovement("<Up>")
+"onoremap <silent> <expr> <Down> ScreenMovement("<Down>")
+"onoremap <silent> <expr> <Up> ScreenMovement("<Up>")
 onoremap <silent> <expr> 0 ScreenMovement("0")
 onoremap <silent> <expr> ^ ScreenMovement("^")
 onoremap <silent> <expr> $ ScreenMovement("$")
 nnoremap <silent> <expr> j ScreenMovement("j")
 nnoremap <silent> <expr> k ScreenMovement("k")
-nnoremap <silent> <expr> <Down> ScreenMovement("<Down>")
-nnoremap <silent> <expr> <Up> ScreenMovement("<Up>")
+"nnoremap <silent> <expr> <Down> ScreenMovement("<Down>")
+"nnoremap <silent> <expr> <Up> ScreenMovement("<Up>")
 nnoremap <silent> <expr> 0 ScreenMovement("0")
 nnoremap <silent> <expr> ^ ScreenMovement("^")
 nnoremap <silent> <expr> $ ScreenMovement("$")
 vnoremap <silent> <expr> j ScreenMovement("j")
 vnoremap <silent> <expr> k ScreenMovement("k")
-vnoremap <silent> <expr> <Down> ScreenMovement("<Down>")
-vnoremap <silent> <expr> <Up> ScreenMovement("<Up>")
+"vnoremap <silent> <expr> <Down> ScreenMovement("<Down>")
+"vnoremap <silent> <expr> <Up> ScreenMovement("<Up>")
 vnoremap <silent> <expr> 0 ScreenMovement("0")
 vnoremap <silent> <expr> ^ ScreenMovement("^")
 vnoremap <silent> <expr> $ ScreenMovement("$")
@@ -749,7 +749,7 @@ Plug 'chrisbra/csv.vim'                " View csv files properly
 " Integrations
 """""""""""""""""""""""""""""""""""""""
 " Vim HardTime
-Plug 'takac/vim-hardtime'
+" Plug 'takac/vim-hardtime'
 Plug 'KabbAmine/zeavim.vim', {'on': [
             \    'Zeavim', 'Docset',
             \    '<Plug>Zeavim',
@@ -994,4 +994,29 @@ let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_toml_frontmatter = 1
 let g:vim_markdown_json_frontmatter = 1
+
+function! Mirror(dict)
+  for [key, value] in items(a:dict)
+    let a:dict[value] = key
+  endfor
+  return a:dict
+endfunction
+
+function! S(number)
+  return submatch(a:number)
+endfunction
+
+function! SwapWords(dict, ...)
+  let words = keys(a:dict) + values(a:dict)
+  let words = map(words, 'escape(v:val, "|")')
+  if(a:0 == 1)
+    let delimiter = a:1
+  else
+    let delimiter = '/'
+  endif
+  let pattern = '\v(' . join(words, '|') . ')'
+  exe '%s' . delimiter . pattern . delimiter
+      \ . '\=' . string(Mirror(a:dict)) . '[S(0)]'
+      \ . delimiter . 'g'
+endfunction
 
