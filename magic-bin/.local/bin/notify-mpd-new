@@ -1,0 +1,18 @@
+#!/bin/sh
+
+form="\n<b>Artist:</b>\t<span color='##a1b56c'>%artist%</span>\n<b>Album:</b>\t<span color='##6a9fb5'>%album%</span>\n<b>Title:</b>\t<span color='##ac4142'>%title%</span>"
+
+while true
+do
+    mpc idle player
+
+    toprint="`mpc status -f \"$form\" | head -n4 | sed \"s:&:&amp;:g\"`"
+    echo $toprint
+
+    artpath="/home/ashhar/Music/$(dirname "$(mpc status -f '%file%' | head -n1)")/cover.jpg"
+
+    rm /tmp/cover.png
+    convert -resize 128x128 "$artpath" /tmp/cover.png
+
+    notify-send -i "/tmp/cover.png" "                   MPD" "$toprint"
+done

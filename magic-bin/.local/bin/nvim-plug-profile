@@ -14,7 +14,7 @@ puts 'Assuming your vimfiles folder as `~/.config/nvim/`'
 VIMFILES_DIR = File.join(ENV['HOME'], '.config/nvim')
 
 puts "Generating vim startup profile..."
-system('nvim', '--startuptime', LOG, '-c', 'q')
+system('nvim', '-u', '~/.vimmini', '--startuptime', LOG, '-c', 'q')
 
 # detect plugin manager
 plug_dir=""

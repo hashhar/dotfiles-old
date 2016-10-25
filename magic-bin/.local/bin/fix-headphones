@@ -1,0 +1,4 @@
+#!/bin/sh
+
+pacmd set-source-port 2 analog-input-headphone-mic
+pacmd set-source-port 2 analog-input-headset-mic
