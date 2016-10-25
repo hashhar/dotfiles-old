@@ -538,6 +538,13 @@ for_window [class="Firefox" \
 for_window [class=\
            "Simplescreenrecorder"]     floating enable
 
+# Convert current window to a 16:9 floating sticky window
+bindsym    $mod+y                      fullscreen disable;\
+                                       floating enable; \
+                                       resize set 533 300; \
+                                       sticky enable; \
+                                       move window to position 833 0
+
 # MOUSE BINDINGS
 # =====================================
 
