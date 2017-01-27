@@ -547,6 +547,7 @@ bindsym    $mod+y                      fullscreen disable;\
 
 # MOUSE BINDINGS
 # =====================================
+exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 
 # Disable focus switching using mouse hover (clicking would still tranfer focus)
 focus_follows_mouse                    no

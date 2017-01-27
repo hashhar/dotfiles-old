@@ -118,6 +118,9 @@ fi
 
 # CUSTOMIZATIONS TO SHELL
 ###############################################################################
+export XDG_CONFIG_HOME="/home/ashhar/.config"
+export XDG_DATA_HOME="/home/ashhar/.local/share"
+export XDG_CACHE_HOME="/home/ashhar/.cache"
 FAKE_HOME="/home/ashhar"
 export PATH="/usr/games:$PATH"
 
@@ -273,11 +276,5 @@ export NVM_DIR="$FAKE_HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
-# Golang
-export GOPATH="$FAKE_HOME/dev/golang"
-
 # GNOME Development
 export PATH="$FAKE_HOME/.local/bin:$PATH"
-
-# Anaconda3
-export PATH="/opt/anaconda3/bin:$PATH"

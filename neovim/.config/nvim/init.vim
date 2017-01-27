@@ -711,7 +711,7 @@ Plug 'tmux-plugins/vim-tmux'                     " Syntax files for tmux.conf
 " Code Completion
 """""""""""""""""""""""""""""""""""""""
 Plug 'raimondi/delimitMate'                      " Insert mode autocompletion for quotes, parenthesis, brackets etc.
-Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.vim/plugged/YouCompleteMe && /usr/bin/python3 install.py --tern-completer --clang-completer --gocode-completer'} " Semantic autocompletion
+Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.vim/plugged/YouCompleteMe && /usr/bin/python3 install.py --tern-completer --clang-completer'} " Semantic autocompletion
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'} " Generates config files for YCM and ColorCoded (NOTE: Default branch is called 'stable')
 Plug 'SirVer/ultisnips'                          " Snippets for vim
 Plug 'honza/vim-snippets'                        " Legacy vim snippets
